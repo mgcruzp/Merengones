@@ -1,0 +1,155 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilos de navegación */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: white;
+  border-bottom: 2px solid #b8e2f6;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.logo {
+  margin-left: 30px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #6c6c6c;
+}
+
+.logo .highlight {
+  color: #b8e2f6;
+}
+
+.nav-links {
+  margin-right: 30px;
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #444;
+  font-size: 16px;
+  position: relative;
+  padding-bottom: 5px;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+  color: #b8e2f6;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #b8e2f6;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a:focus::after {
+  width: 100%;
+}
+
+/* Estilo para resaltar el link activo */
+.nav-links a.active {
+  color: #b8e2f6; 
+  font-weight: bold;
+}
+
+
+/* Hero: imagen con texto encima */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background-image: url('ruta-a-tu-imagen.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-text {
+  position: absolute;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+  text-align: center;
+  padding: 0 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Caja informativa */
+.info-box {
+  margin: 60px auto;
+  max-width: 900px;
+  padding: 30px 40px;
+  background-color: #e8f4fd;
+  border-left: 8px solid #2b84e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.info-box h2 {
+  font-size: 26px;
+  color: #2b84e0;
+  margin-bottom: 15px;
+}
+
+.info-box p {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Bienvenido centrado */
+h1 {
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 36px;
+  margin-top: 40px;
+  color: #2b84e0;
+}
+
+.cuadros-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+  align-items: stretch;
+}
+
+.cuadro {
+  flex: 1;
+  max-width: 300px;
+  background-color: #d4f1f9; /* baby blue */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 16px;
+  font-weight: normal; /* sin negrilla */
+  color: #6c757d; /* gris bonito */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
