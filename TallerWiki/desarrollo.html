@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Desarrollo - Merengones</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">Wiki<span class="highlight">Proyecto</span></div>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="equipo.html">Equipo</a></li>
+        <li><a href="#">Documentación</a></li>
+        <li><a href="desarrollo.html" class="active">Desarrollo</a></li>
+        <li><a href="#">Pruebas</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Desarrollo del Proyecto</h1>
+
+    <section class="dev-section">
+      <h2>Endpoints del Backend</h2>
+      <p>Explicación de los endpoints que usamos para la comunicación con el servidor.</p>
+    </section>
+
+    <section class="dev-section">
+      <h2>Frontend y Backend</h2>
+      <p>Información técnica sobre las tecnologías usadas en ambas partes.</p>
+    </section>
+
+    <section class="dev-section">
+      <h2>Guía de Instalación</h2>
+      <p>Pasos para instalar o correr el proyecto.</p>
+    </section>
+
+    <section class="dev-section">
+      <h2>Fragmentos de Código</h2>
+      <pre><code>
+// Ejemplo de fetch
+fetch('/api/usuarios')
+  .then(response => response.json())
+  .then(data => console.log(data));
+      </code></pre>
+    </section>
+  </main>
+</body>
+</html>

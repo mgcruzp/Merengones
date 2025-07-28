@@ -153,3 +153,77 @@ h1 {
   text-align: center;
 }
 
+/* Estilos para la página de Desarrollo */
+.dev-section {
+  background-color: #e8f4fd;   /* azul claro */
+  border-left: 6px solid #2b84e0;
+  padding: 20px;
+  margin: 30px auto;
+  max-width: 800px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.dev-section h2 {
+  color: #2b84e0;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.dev-section p {
+  color: #333;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Estilo para fragmentos de código */
+pre {
+  background-color: #1e1e1e; /* fondo oscuro */
+  color: #d4d4d4;
+  padding: 15px;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.equipo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.miembro {
+  background-color: #d4f1f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+}
+
+.miembro h3 {
+  color: #2b84e0;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.miembro p {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+.foto-perfil {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 10px auto;
+  border: 2px solid #fff;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
