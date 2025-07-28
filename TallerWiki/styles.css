@@ -227,3 +227,60 @@ pre {
   border: 2px solid #fff;
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
+
+/*Para contacto: */
+main {
+  padding: 0 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+main h1 {
+  text-align: center;
+  color: #2a7de1;
+  margin: 40px 0 20px;
+  font-size: 2.5rem;
+}
+
+.dev-section {
+  background-color: #e6f6ff;
+  padding: 30px;
+  margin: 20px auto;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.form-group button {
+  background-color: #2a7de1;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.form-group button:hover {
+  background-color: #155db2;
+}
