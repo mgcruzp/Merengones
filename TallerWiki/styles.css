@@ -352,3 +352,7 @@ h1 {
 .form-group button:hover {
   background-color: #155db2;
 }
+
+h1 {
+  color: blue;
+}
