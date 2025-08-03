@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+  <body>
+  <nav class="navbar">
+    <div class="logo">Wiki<span class="highlight">Proyecto</span></div>
+      <ul class="nav-links">
+        <li><a th:href="@{/}">Inicio</a></li>
+        <li><a th:href="@{/equipo}">Equipo</a></li>
+        <li><a href="#">Documentación</a></li>
+        <li><a th:href="@{/desarrollo}">Desarrollo</a></li>
+        <li><a th:href="@{/pruebas}" class="active">Pruebas</a></li>
+        <li><a th:href="@{/contacto}">Contacto</a></li>
+      </ul>
+  </nav>
+
+  <h1>Pruebas del Proyecto</h1>
+
+  <div class="cards">
+    <div class="card">
+      <i class="fas fa-check-circle icon green"></i>
+      <h3>Validación</h3>
+      <p>Se probaron todas las funciones para asegurar que cumplieran su propósito sin errores.</p>
+    </div>
+    <div class="card">
+      <i class="fas fa-bug icon red"></i>
+      <h3>Manejo de errores</h3>
+      <p>Simulación de errores comunes para garantizar estabilidad y retroalimentación clara.</p>
+    </div>
+    <div class="card">
+      <i class="fas fa-tachometer-alt icon blue"></i>
+      <h3>Rendimiento</h3>
+      <p>Pruebas de carga para verificar funcionamiento fluido con múltiples usuarios.</p>
+    </div>
+    <div class="card">
+      <i class="fas fa-laptop icon purple"></i>
+      <h3>Compatibilidad</h3>
+      <p>Funcionamiento verificado en varios navegadores y dispositivos.</p>
+    </div>
+    <div class="card">
+      <i class="fas fa-clipboard-check icon orange"></i>
+      <h3>Formularios</h3>
+      <p>Validaciones completas en entradas y retroalimentación visual efectiva.</p>
+    </div>
+    <div class="card">
+      <i class="fas fa-universal-access icon teal"></i>
+      <h3>Accesibilidad</h3>
+      <p>Pruebas con teclado y lectores para asegurar inclusión y navegación accesible.</p>
+    </div>
+  </div>
+</body>
+</html>
