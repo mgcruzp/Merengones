@@ -16,10 +16,10 @@ public class PaginasController {
         return "equipo";
     }
 
-    @GetMapping("/contacto")
+    /*@GetMapping("/contacto")
     public String contacto() {
         return "contacto";
-    }
+    }*/
 
     @GetMapping("/desarrollo")
     public String desarrollo() {
