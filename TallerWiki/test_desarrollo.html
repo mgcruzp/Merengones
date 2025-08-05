@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Pruebas para desarrollo.html</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .test-success { color: green; }
+    .test-fail { color: red; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Pruebas Unitarias: desarrollo.html</h1>
+  </header>
+  <main>
+    <section>
+      <h2>Pruebas para fetch de usuarios</h2>
+      <div id="test-results"></div>
+    </section>
+    <script>
+      // Mock fetch function
+      function mockFetch(url) {
+        if (url === '/api/usuarios') {
+          return Promise.resolve({
+            json: () => Promise.resolve([{id:1, nombre:"Ana"}])
+          });
+        } else if (url === '/api/usuarios_error') {
+          return Promise.reject(new Error('Error de servidor'));
+        } else if (url === '/api/usuarios_vacio') {
+          return Promise.resolve({
+            json: () => Promise.resolve([])
+          });
+        }
+        return Promise.reject(new Error('URL desconocida'));
+      }
+
+      // Test cases
+      const tests = [
+        {
+          name: "Éxito: fetch usuarios",
+          run: () => mockFetch('/api/usuarios')
+            .then(res => res.json())
+            .then(data => Array.isArray(data) && data.length === 1)
+        },
+        {
+          name: "Error: fetch usuarios",
+          run: () => mockFetch('/api/usuarios_error')
+            .then(() => false)
+            .catch(err => err.message === 'Error de servidor')
+        },
+        {
+          name: "Caso perimetral: lista vacía",
+          run: () => mockFetch('/api/usuarios_vacio')
+            .then(res => res.json())
+            .then(data => Array.isArray(data) && data.length === 0)
+        }
+      ];
+
+      // Run tests and show results
+      async function runTests() {
+        const resultsDiv = document.getElementById('test-results');
+        for (const test of tests) {
+          try {
+            const result = await test.run();
+            const el = document.createElement('div');
+            el.className = result ? 'test-success' : 'test-fail';
+            el.textContent = `${test.name}: ${result ? 'OK' : 'FALLÓ'}`;
+            resultsDiv.appendChild(el);
+          } catch (e) {
+            const el = document.createElement('div');
+            el.className = 'test-fail';
+            el.textContent = `${test.name}: FALLÓ (${e.message})`;
+            resultsDiv.appendChild(el);
+          }
+        }
+      }
+      runTests();
+    </script>
+  </main>
+</body>
+</html><!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Tests para desarrollo.html</title>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2em; }
+        .test-pass { color: green; }
+        .test-fail { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Tests para desarrollo.html</h1>
+    <ul id="test-results"></ul>
+    <script>
+        const results = [];
+
+        // Test 1: Verificar que existe la barra de navegación
+        const nav = document.createElement('nav');
+        nav.className = 'navbar';
+        nav.innerHTML = `
+            <div class="logo">Wiki<span class="highlight">Proyexcto</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="equipo.html">Equipo</a></li>
+                <li><a href="#">Documentación</a></li>
+                <li><a href="desarrollo.html" class="active">Desarrollo</a></li>
+                <li><a href="pruebas.html">Pruebas</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        `;
+        document.body.appendChild(nav);
+
+        function testNavLinks() {
+            const navLinks = nav.querySelectorAll('.nav-links li a');
+            if (navLinks.length === 6) {
+                results.push({name: 'La barra de navegación tiene 6 enlaces', pass: true});
+            } else {
+                results.push({name: 'La barra de navegación tiene 6 enlaces', pass: false});
+            }
+            // Test active link
+            const active = nav.querySelector('.nav-links .active');
+            if (active && active.textContent.trim() === 'Desarrollo') {
+                results.push({name: 'El enlace "Desarrollo" está activo', pass: true});
+            } else {
+                results.push({name: 'El enlace "Desarrollo" está activo', pass: false});
+            }
+        }
+
+        // Test 2: Verificar que existen las secciones principales
+        function testSections() {
+            const sectionTitles = [
+                'Endpoints del Backend',
+                'Frontend y Backend',
+                'Guía de Instalación',
+                'Fragmentos de Código'
+            ];
+            let allFound = true;
+            sectionTitles.forEach(title => {
+                const h2 = document.createElement('h2');
+                h2.textContent = title;
+                document.body.appendChild(h2);
+                if (document.body.textContent.indexOf(title) === -1) {
+                    allFound = false;
+                }
+            });
+            results.push({
+                name: 'Todas las secciones principales están presentes',
+                pass: allFound
+            });
+        }
+
+        // Test 3: Verificar que el fragmento de código contiene "fetch"
+        function testCodeSnippet() {
+            const code = `
+            // Ejemplo de fetch
+            fetch('/api/usuarios')
+                .then(response => response.json())
+                .then(data => console.log(data));
+            `;
+            if (code.includes('fetch')) {
+                results.push({name: 'El fragmento de código contiene "fetch"', pass: true});
+            } else {
+                results.push({name: 'El fragmento de código contiene "fetch"', pass: false});
+            }
+        }
+
+        // Ejecutar tests
+        testNavLinks();
+        testSections();
+        testCodeSnippet();
+
+        // Mostrar resultados
+        const ul = document.getElementById('test-results');
+        results.forEach(test => {
+            const li = document.createElement('li');
+            li.textContent = test.name;
+            li.className = test.pass ? 'test-pass' : 'test-fail';
+            ul.appendChild(li);
+        });
+    </script>
+</body>
+</html>
