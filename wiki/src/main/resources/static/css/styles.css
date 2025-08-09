@@ -10,14 +10,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 40px;
+  padding: 10px 20px;
   background-color: white;
   border-bottom: 2px solid #b8e2f6;
   font-family: 'Segoe UI', sans-serif;
 }
 
 .logo {
-  margin-left: 30px;
+  margin-left: 0px;
   font-size: 28px;
   font-weight: bold;
   color: #6c6c6c;
@@ -365,13 +365,25 @@ h1 {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   margin-bottom: 40px;
   display: block;
-  margin-left: -7.5%; /* Centrar cuando excede el ancho */
+  margin-left: -7.5%;
 }
 
+.logito {
+  display: flex;
+  align-items: center;
+  gap: 5px;               /* separación entre logo y texto */
+   font-eight: 500;
+  font-size: 14px;
+}
 
+/* Imagen del logo */
+.logito-img {
+  height: 70px;
+  width: auto;
+  object-fit: contain;
+}
 
-
-/* Nuevos estilos para cuadros 2x2 */
+/* Nuevos /* Imagen del logo */estilos para cuadros 2x2 */
 .cuadros-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

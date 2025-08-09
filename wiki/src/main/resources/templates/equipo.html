@@ -7,7 +7,13 @@
 <body>
   <header>
   <nav class="navbar">
-    <div class="logo">Wiki<span class="highlight">Proyecto</span></div>
+      <div class="logito">
+        <img th:src="@{/images/Imagenlogo.png}" alt="Logo del proyecto" class="logito-img">
+        <div class="logo">
+          <span>Wiki</span><span class="highlight">Proyecto</span>
+        </div>
+      </div>
+
       <ul class="nav-links">
         <li><a th:href="@{/}">Inicio</a></li>
         <li><a th:href="@{/equipo}" class="active">Equipo</a></li>

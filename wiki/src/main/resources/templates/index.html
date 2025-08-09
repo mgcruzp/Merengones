@@ -9,22 +9,29 @@
 <body>
   <header>
     <nav class="navbar">
-      <div class="logo">Wiki<span class="highlight">Proyecto</span></div>
-      <ul class="nav-links">
-        <li><a th:href="@{/}" class="active">Inicio</a></li>
-        <li><a th:href="@{/equipo}">Equipo</a></li>
-        <li><a th:href="@{/documentacion}">Documentación</a></li>
-        <li><a th:href="@{/desarrollo}">Desarrollo</a></li>
-        <li><a th:href="@{/pruebas}">Pruebas</a></li>
-        <li><a th:href="@{/contacto}">Contacto</a></li>
-      </ul>
-    </nav>
+      <div class="logito">
+        <img th:src="@{/images/Imagenlogo.png}" alt="Logo del proyecto" class="logito-img">
+        <div class="logo">
+          <span>Wiki</span><span class="highlight">Proyecto</span>
+        </div>
+      </div>
+
+  <ul class="nav-links">
+    <li><a th:href="@{/}" class="active">Inicio</a></li>
+    <li><a th:href="@{/equipo}">Equipo</a></li>
+    <li><a th:href="@{/documentacion}">Documentación</a></li>
+    <li><a th:href="@{/desarrollo}">Desarrollo</a></li>
+    <li><a th:href="@{/pruebas}">Pruebas</a></li>
+    <li><a th:href="@{/contacto}">Contacto</a></li>
+  </ul>
+</nav>
+
   </header>
 
   <main>
     <!-- Imagen de bienvenida -->
     <div class="imagen-bienvenida">
-      <img th:src="@{/images/ImagenBienvenida.png}" alt="Imagen de bienvenida" />
+      <img th:src="@{/images/imagenBienvenido.png}" alt="Imagen de bienvenida" />
     </div>
 
     <!-- Título de sección -->
