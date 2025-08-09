@@ -8,7 +8,7 @@ public class PaginasController {
 
     @GetMapping("/")
     public String index() {
-        return "index"; // Busca index.html en /resources/templates/
+        return "index"; 
     }
 
     @GetMapping("/equipo")
@@ -24,6 +24,11 @@ public class PaginasController {
     @GetMapping("/desarrollo")
     public String desarrollo() {
         return "desarrollo";
+    }
+
+    @GetMapping("/documentacion")
+    public String documentacion() {
+        return "documentacion";
     }
 
     @GetMapping("/pruebas")
