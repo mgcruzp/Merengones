@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Documentación</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">Wiki<span class="highlight">Proyecto</span></div>
+      <ul class="nav-links">
+        <li><a th:href="@{/}">Inicio</a></li>
+        <li><a th:href="@{/equipo}">Equipo</a></li>
+        <li><a th:href="@{/documentacion}" class="active">Documentación</a></li>
+        <li><a th:href="@{/desarrollo}">Desarrollo</a></li>
+        <li><a th:href="@{/pruebas}">Pruebas</a></li>
+        <li><a th:href="@{/contacto}">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1 class="section-title">Documentación del Proyecto</h1>
+
+    <section>
+      <h2>Descripción General del Proyecto</h2>
+      <p>
+        Aquí va una descripción resumida del objetivo y alcance del proyecto.
+        Puedes incluir el propósito, usuarios finales y contexto.
+      </p>
+    </section>
+
+    <section>
+      <h2>Requerimientos Funcionales</h2>
+      <ul>
+        <li>RF1 - Descripción del requerimiento funcional.</li>
+        <li>RF2 - Descripción del requerimiento funcional.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Requerimientos No Funcionales</h2>
+      <ul>
+        <li>RNF1 - Descripción del requerimiento no funcional.</li>
+        <li>RNF2 - Descripción del requerimiento no funcional.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Arquitectura de Software</h2>
+      <p>
+        Explicación de la arquitectura utilizada (por ejemplo, MVC, microservicios, capas, etc.).
+      </p>
+    </section>
+
+    <section>
+      <h2>Diagramas y Modelos</h2>
+      <p>
+        Aquí puedes insertar imágenes de diagramas UML, casos de uso, diagramas de secuencia, etc.
+      </p>
+    </section>
+
+    <section>
+      <h2>Diccionario de Datos</h2>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Nombre del Campo</th>
+            <th>Tipo de Dato</th>
+            <th>Descripción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>id_usuario</td>
+            <td>Entero</td>
+            <td>Identificador único del usuario</td>
+          </tr>
+          <tr>
+            <td>nombre</td>
+            <td>Texto</td>
+            <td>Nombre del usuario</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>
