@@ -353,18 +353,23 @@ h1 {
   background-color: #155db2;
 }
 
-.imagen-equipo {
+.imagen-bienvenida {
   text-align: center;
   margin-top: 30px;
 }
 
-.imagen-equipo img {
-  width: 60%;
-  max-width: 600px;
+.imagen-bienvenida img {
+  width: 120%;
+  max-width: 1200px;
   border-radius: 15px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   margin-bottom: 40px;
+  display: block;
+  margin-left: -7.5%; /* Centrar cuando excede el ancho */
 }
+
+
+
 
 /* Nuevos estilos para cuadros 2x2 */
 .cuadros-grid {

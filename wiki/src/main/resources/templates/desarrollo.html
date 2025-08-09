@@ -19,34 +19,39 @@
       </ul>
   </nav>
   </header>
+<main>
+  <!-- Imagen de bienvenida -->
+  <div class="imagen-bienvenida">
+    <img th:src="@{/images/ImagenBienvenida.png}" alt="Imagen de bienvenida" />
+  </div>
 
-  <main>
-    <h1>Desarrollo del Proyecto</h1>
+  <!-- Sección explicativa -->
+  <section class="dev-section">
+    <h2>¿Qué es esta wiki?</h2>
+    <div class="cuadros-grid">
+      <div class="cuadro">📘
+        <p>
+          Esta wiki ha sido creada como un espacio centralizado para organizar, documentar y compartir toda la información relevante del proyecto.
+        </p>
+      </div>
+      <div class="cuadro">🎯
+        <p>
+          Nuestro propósito es facilitar la colaboración, mantener la trazabilidad de los avances y permitir que cualquier persona involucrada pueda consultar y aportar contenido de manera clara y estructurada.
+        </p>
+      </div>
+      <div class="cuadro">🔄
+        <p>
+          A medida que el proyecto evolucione, este sitio también lo hará. No dudes en añadir documentación, referencias útiles, ideas, o cualquier elemento que contribuya al desarrollo y éxito del proyecto.
+        </p>
+      </div>
+      <div class="cuadro">🤝
+        <p>
+          Este espacio está diseñado para fortalecer el trabajo en equipo y fomentar la transparencia durante todo el ciclo de vida del proyecto.
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
 
-    <section class="dev-section">
-      <h2>Endpoints del Backend</h2>
-      <p>Explicación de los endpoints que usamos para la comunicación con el servidor.</p>
-    </section>
-
-    <section class="dev-section">
-      <h2>Frontend y Backend</h2>
-      <p>Información técnica sobre las tecnologías usadas en ambas partes.</p>
-    </section>
-
-    <section class="dev-section">
-      <h2>Guía de Instalación</h2>
-      <p>Pasos para instalar o correr el proyecto.</p>
-    </section>
-
-    <section class="dev-section">
-      <h2>Fragmentos de Código</h2>
-      <pre><code>
-// Ejemplo de fetch
-fetch('/api/usuarios')
-  .then(response => response.json())
-  .then(data => console.log(data));
-      </code></pre>
-    </section>
-  </main>
 </body>
 </html>
