@@ -11,9 +11,9 @@
     <nav class="navbar">
       <div class="logo">Wiki<span class="highlight">Proyecto</span></div>
       <ul class="nav-links">
-        <li><a th:href="@{/}" class="active">Inicio</a></li>
+        <li><a th:href="@{/}" >Inicio</a></li>
         <li><a th:href="@{/equipo}">Equipo</a></li>
-        <li><a th:href="@{/documentacion}">Documentación</a></li>
+        <li><a th:href="@{/documentacion}"class="active">Documentación</a></li>
         <li><a th:href="@{/desarrollo}">Desarrollo</a></li>
         <li><a th:href="@{/pruebas}">Pruebas</a></li>
         <li><a th:href="@{/contacto}">Contacto</a></li>
@@ -21,30 +21,75 @@
     </nav>
   </header>
 
-  <main>
-    <!-- Imagen de bienvenida -->
-    <div class="imagen-bienvenida">
-      <img th:src="@{/images/ImagenBienvenida.png}" alt="Imagen de bienvenida" />
-    </div>
+ <main>
+    <h1>Documentación del Proyecto</h1>
 
-    <!-- Título de sección -->
-    <h1>¿Qué es esta wiki?</h1>
-
-    <!-- Cada texto en su propio cuadro con párrafo -->
     <section class="dev-section">
-      <p>📘 Esta wiki ha sido creada como un espacio centralizado para organizar, documentar y compartir toda la información relevante del proyecto.</p>
+      <h2>Descripción general</h2>
+      <p>
+        <strong>Arrienda tu Finca</strong> es una plataforma web diseñada para facilitar el proceso de arriendo de fincas rurales entre particulares, conectando a propietarios (usuarios arrendatarios) que desean ofrecer sus propiedades en alquiler con personas interesadas en arrendarlas temporalmente (usuarios arrendadores).
+      </p>
+      <p>
+        La página web ofrece un entorno seguro, intuitivo y eficiente para la gestión de propiedades, solicitudes de arriendo, pagos, calificaciones y comunicación entre usuarios. Se enfoca en fomentar el turismo rural y el aprovechamiento de espacios campestres que, de otro modo, podrían estar subutilizados.
+      </p>
+      <p>El sistema contempla dos perfiles principales de usuario:</p>
+      <ul>
+        <li>
+          <strong>Usuario Arrendatario:</strong> Puede registrar, editar, eliminar y administrar fincas disponibles para arriendo, revisar solicitudes entrantes, aceptar o rechazar solicitudes, verificar pagos realizados y calificar a los arrendadores tras la experiencia.
+        </li>
+        <li>
+          <strong>Usuario Arrendador:</strong> Puede buscar fincas por ubicación geográfica, visualizar detalles, enviar solicitudes de arriendo, realizar pagos tras aprobación y calificar tanto al arrendatario como a la finca.
+        </li>
+      </ul>
+      <p>
+        La plataforma cuenta con un sistema de autenticación y autorización que permite gestionar los diferentes roles y permisos, y presenta interfaces web amigables para garantizar una experiencia clara e intuitiva desde cualquier navegador.
+      </p>
+    </section>
+
+
+    <section class="dev-section">
+      <h2>Requerimientos Funcionales</h2>
+      <p>RF1 - Descripción del requerimiento funcional.</p>
     </section>
 
     <section class="dev-section">
-      <p>🎯 Nuestro propósito es facilitar la colaboración, mantener la trazabilidad de los avances y permitir que cualquier persona involucrada pueda consultar y aportar contenido de manera clara y estructurada.</p>
+      <h2>Requerimientos No Funcionales</h2>
+      <p>RF1 - Descripción del requerimiento funcional.</p>
     </section>
 
     <section class="dev-section">
-      <p>🔄 A medida que el proyecto evolucione, este sitio también lo hará. No dudes en añadir documentación, referencias útiles, ideas, o cualquier elemento que contribuya al desarrollo y éxito del proyecto.</p>
+      <h2>Arquitectura de Software</h2>
+      <p>Explicación de la arquitectura utilizada (por ejemplo, MVC, microservicios, capas, etc.).</p>
     </section>
 
     <section class="dev-section">
-      <p>🤝 Este espacio está diseñado para fortalecer el trabajo en equipo y fomentar la transparencia durante todo el ciclo de vida del proyecto.</p>
+      <h2>Diagramas y Modelos</h2>
+      <p>Aquí puedes insertar imágenes de diagramas UML, casos de uso, diagramas de secuencia, etc.</p>
+    </section>
+
+     <section class="dev-section">
+       <h2>Diccionario de Datos</h2>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Nombre del Campo</th>
+            <th>Tipo de Dato</th>
+            <th>Descripción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>id_usuario</td>
+            <td>Entero</td>
+            <td>Identificador único del usuario</td>
+          </tr>
+          <tr>
+            <td>nombre</td>
+            <td>Texto</td>
+            <td>Nombre del usuario</td>
+          </tr>
+        </tbody>
+      </table>
     </section>
   </main>
 </body>
