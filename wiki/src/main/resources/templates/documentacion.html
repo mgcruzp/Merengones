@@ -30,13 +30,23 @@
   
   <div class="doc-layout">
   <aside class="doc-sidebar">
-    <div class="toc-title">Tabla de contenidos</div>
-    <nav>
-      <a th:href="@{/documentacion} + '#descripcion'">Descripción general</a>
-      <a th:href="@{/documentacion} + '#req-func'">Requerimientos funcionales</a>
-      <a th:href="@{/documentacion} + '#req-nofunc'">Requerimientos no funcionales</a>
-    </nav>
-  </aside>
+  <div class="toc-title">Tabla de contenidos</div>
+  <nav>
+    <a th:href="@{/documentacion} + '#descripcion'">Descripción general</a>
+    <a th:href="@{/documentacion} + '#req-func'">Requerimientos funcionales</a>
+    <a th:href="@{/documentacion} + '#req-nofunc'">Requerimientos no funcionales</a>
+    <a th:href="@{/documentacion} + '#diag-arquitectura'">Diagrama de arquitectura</a>
+    <a th:href="@{/documentacion} + '#diag-ref'">Diagramas de referencia C4</a>
+    <a th:href="@{/documentacion} + '#diag-contexto'">&nbsp;&nbsp;• Contexto</a>
+    <a th:href="@{/documentacion} + '#diag-contenedor'">&nbsp;&nbsp;• Contenedor</a>
+    <a th:href="@{/documentacion} + '#diag-componentes'">&nbsp;&nbsp;• Componentes</a>
+    <a th:href="@{/documentacion} + '#diag-clases'">Diagrama de clases</a>
+    <a th:href="@{/documentacion} + '#diag-despliegue'">Diagrama de despliegue</a>
+    <a th:href="@{/documentacion} + '#bd'">Base de datos</a>
+    <a th:href="@{/documentacion} + '#bd-mer'">&nbsp;&nbsp;• Modelo Entidad-Relación (ER)</a>
+    <a th:href="@{/documentacion} + '#bd-diccionario'">&nbsp;&nbsp;• Diccionario de datos</a>
+  </nav>
+</aside>
 
 
  <main>
@@ -139,7 +149,55 @@
         <li><strong>RNF6.1: </strong>El sistema debe permitir la localización y traducción de interfaces para su uso en múltiples países o regiones.</li>
       </ul>
     </section>
-  </main>
+
+    <section id="diag-arquitectura" class="dev-section">
+        <h3><strong>Diagrama de arquitectura</strong></h3>
+        <p>Aquí irá el diagrama de arquitectura...</p>
+      </section>
+
+      <section id="diag-ref" class="dev-section">
+        <h3><strong>Diagramas de referencia C4</strong></h3>
+      </section>
+
+      <section id="diag-contexto" class="dev-section">
+        <h4><strong>Diagrama de Contexto</strong></h4>
+        <p>Aquí irá el diagrama de contexto...</p>
+      </section>
+
+      <section id="diag-contenedor" class="dev-section">
+        <h4><strong>Diagrama de Contenedor</strong></h4>
+        <p>Aquí irá el diagrama de contenedor...</p>
+      </section>
+
+      <section id="diag-componentes" class="dev-section">
+        <h4><strong>Diagrama de Componentes</strong></h4>
+        <p>Aquí irá el diagrama de componentes...</p>
+      </section>
+
+      <section id="diag-clases" class="dev-section">
+        <h3><strong>Diagrama de clases</strong></h3>
+        <p>Aquí irá el diagrama de clases...</p>
+      </section>
+
+      <section id="diag-despliegue" class="dev-section">
+        <h3><strong>Diagrama de despliegue</strong></h3>
+        <p>Aquí irá el diagrama de despliegue...</p>
+      </section>
+
+      <section id="bd" class="dev-section">
+        <h3><strong>Base de datos</strong></h3>
+      </section>
+
+      <section id="bd-mer" class="dev-section">
+        <h4><strong>Modelo Entidad-Relación (ER)</strong></h4>
+        <p>Aquí irá el MER...</p>
+      </section>
+
+      <section id="bd-diccionario" class="dev-section">
+        <h4><strong>Diccionario de datos</strong></h4>
+        <p>Aquí irá el diccionario de datos...</p>
+      </section>
+        </main>
   </div>
 </body>
 </html>
