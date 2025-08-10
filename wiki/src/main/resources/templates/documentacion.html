@@ -29,9 +29,17 @@
 
  <main>
     <h1>Documentación del Proyecto</h1>
-
-    <section class="dev-section">
-      <h2>Descripción general</h2>
+      <aside class="doc-sidebar">
+        <div class="toc-title">Tabla de contenidos</div>
+        <nav>
+          <a th:href="@{/documentacion} + '#descripcion'">Descripción general</a>
+          <a th:href="@{/documentacion} + '#req-func'">Requerimientos funcionales</a>
+          <a th:href="@{/documentacion} + '#req-nofunc'">Requerimientos no funcionales</a>
+        </nav>
+      </aside>
+      <section id="descripcion" class="dev-section">
+      <h3><strong>Descripción general</strong></h3>
+      <br>
       <p>
         <strong>Arrienda tu Finca</strong> es una plataforma web diseñada para facilitar el proceso de arriendo de fincas rurales entre particulares, conectando a propietarios (usuarios arrendatarios) que desean ofrecer sus propiedades en alquiler con personas interesadas en arrendarlas temporalmente (usuarios arrendadores).
       </p>
@@ -52,50 +60,79 @@
       </p>
     </section>
 
-
-    <section class="dev-section">
-      <h2>Requerimientos Funcionales</h2>
-      <p>RF1 - Descripción del requerimiento funcional.</p>
+    <section id="req-func" class="dev-section">
+      <h3><strong>Requerimientos Funcionales</strong></h3>
+      <br>
+      <p><strong>RF1. Autenticación y gestión de usuarios:</strong></p>
+      <ul>
+        <li><strong>RF1.1: </strong>El sistema debe permitir el registro de usuarios arrendadores y arrendatarios.</li>
+        <li><strong>RF1.2: </strong>El sistema debe permitir que los usuarios inicien sesión con credenciales válidas.</li>
+        <li><strong>RF1.3: </strong>El sistema debe permitir que los usuarios cierren sesión de manera segura.</li>
+      </ul>
+      <br>
+      <p><strong>RF2. Funcionalidades del Usuario Arrendador:</strong></p>
+      <ul>
+        <li><strong>RF2.1: </strong>El sistema debe permitir que el usuario arrendador registre nuevas fincas disponibles para arriendo.</li>
+        <li><strong>RF2.2: </strong>El sistema debe permitir que el usuario arrendador edite la información de las fincas publicadas.</li>
+        <li><strong>RF2.3: </strong>El sistema debe permitir que el usuario arrendador elimine fincas publicadas.</li>
+        <li><strong>RF2.4: </strong>El sistema debe permitir que el usuario arrendador visualice la lista completa de sus fincas publicadas.</li>
+        <li><strong>RF2.5: </strong>El sistema debe notificar al usuario arrendador si su finca ha sido arrendada.</li>
+        <li><strong>RF2.6: </strong>El sistema debe permitir que el usuario arrendador acepte o rechace solicitudes de arriendo.</li>
+        <li><strong>RF2.7: </strong>El sistema debe permitir que el usuario arrendador consulte el historial de solicitudes recibidas.</li>
+        <li><strong>RF2.8: </strong>El sistema debe permitir que el usuario arrendador verifique si el usuario arrendatario ha realizado el pago.</li>
+        <li><strong>RF2.9: </strong>El sistema debe permitir que el usuario arrendador califique al usuario arrendatario después del arriendo.</li>
+        <li><strong>RF2.10: </strong>El sistema debe permitir que el usuario arrendador suba fotos de su finca.</li>
+        <li><strong>RF2.11: </strong>El sistema debe permitir que el usuario arrendador desactive su finca.</li>
+      </ul>
+      <br>
+      <p><strong>RF3. Funcionalidades del Usuario Arrendatario:</strong></p>
+      <ul>
+        <li><strong>RF3.1: </strong>El sistema debe permitir que el usuario arrendatario busque fincas disponibles utilizando filtros por nombre, municipio, cantidad de personas.</li>
+        <li><strong>RF3.2: </strong>El sistema debe permitir que el usuario arrendatario visualice los detalles de una finca publicada.</li>
+        <li><strong>RF3.3: </strong>El sistema debe permitir que el usuario arrendatario solicite el arriendo de una finca.</li>
+        <li><strong>RF3.4: </strong>El sistema debe notificar al usuario arrendatario si su solicitud ha sido aceptada o rechazada.</li>
+        <li><strong>RF3.5: </strong>El sistema debe permitir que el usuario arrendatario realice el pago del arriendo de manera segura.</li>
+        <li><strong>RF3.6: </strong>El sistema debe permitir que el usuario arrendatario visualice el historial de fincas que ha arrendado.</li>
+        <li><strong>RF3.7: </strong>El sistema debe permitir que el usuario arrendatario califique la finca arrendada y al usuario arrendador.</li>
+      </ul>
+      <br>
     </section>
 
-    <section class="dev-section">
-      <h2>Requerimientos No Funcionales</h2>
-      <p>RF1 - Descripción del requerimiento funcional.</p>
-    </section>
-
-    <section class="dev-section">
-      <h2>Arquitectura de Software</h2>
-      <p>Explicación de la arquitectura utilizada (por ejemplo, MVC, microservicios, capas, etc.).</p>
-    </section>
-
-    <section class="dev-section">
-      <h2>Diagramas y Modelos</h2>
-      <p>Aquí puedes insertar imágenes de diagramas UML, casos de uso, diagramas de secuencia, etc.</p>
-    </section>
-
-     <section class="dev-section">
-       <h2>Diccionario de Datos</h2>
-      <table border="1">
-        <thead>
-          <tr>
-            <th>Nombre del Campo</th>
-            <th>Tipo de Dato</th>
-            <th>Descripción</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>id_usuario</td>
-            <td>Entero</td>
-            <td>Identificador único del usuario</td>
-          </tr>
-          <tr>
-            <td>nombre</td>
-            <td>Texto</td>
-            <td>Nombre del usuario</td>
-          </tr>
-        </tbody>
-      </table>
+    <section id="req-nofunc" class="dev-section">
+      <h3><strong>Requerimientos No Funcionales</strong></h3>
+      <br>
+      <p><strong>RNF1. Usabilidad:</strong></p>
+      <ul>
+        <li><strong>RNF1.1: </strong>El sistema debe ofrecer una interfaz gráfica intuitiva y fácil de usar para todos los usuarios.</li>
+      </ul>
+      <br>
+      <p><strong>RNF2. Rendimiento:</strong></p>
+      <ul>
+        <li><strong>RNF2.1: </strong>El sistema debe cargar cualquier vista en un tiempo máximo de 3 segundos en condiciones de red promedio.</li>
+        <li><strong>RNF2.2: </strong>El sistema debe soportar al menos 10 usuarios concurrentes sin degradar su rendimiento.</li>
+      </ul>
+      <br>
+      <p><strong>RNF3. Seguridad:</strong></p>
+      <ul>
+        <li><strong>RNF3.1: </strong>El sistema debe implementar control de acceso basado en roles (arrendador y arrendatario).</li>
+        <li><strong>RNF3.2: </strong>El sistema debe exigir contraseñas seguras al momento del registro (mínimo 8 caracteres, una mayúscula y un número).</li>
+      </ul>
+      <br>
+      <p><strong>RNF4. Mantenibilidad:</strong></p>
+      <ul>
+        <li><strong>RNF4.1: </strong>El sistema debe estar diseñado bajo una arquitectura modular que facilite la adición o modificación de funcionalidades.</li>
+        <li><strong>RNF4.2: </strong>El sistema debe contar con documentación clara para facilitar el mantenimiento y soporte a través de una wiki.</li>
+      </ul>
+      <br>
+      <p><strong>RNF5. Disponibilidad:</strong></p>
+      <ul>
+        <li><strong>RNF5.1: </strong>El sistema debe estar disponible al menos el 99% del tiempo, garantizando operación continua 24/7.</li>
+      </ul>
+      <br>
+      <p><strong>RNF6. Escalabilidad:</strong></p>
+      <ul>
+        <li><strong>RNF6.1: </strong>El sistema debe permitir la localización y traducción de interfaces para su uso en múltiples países o regiones.</li>
+      </ul>
     </section>
   </main>
 </body>

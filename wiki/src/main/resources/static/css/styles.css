@@ -128,12 +128,27 @@ h1 {
   color: #2b84e0;
 }
 
+h3 {
+  text-align: left;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 26px;
+  margin-top: 10px;
+  color: #2b84e0;
+}
+
 .cuadros-container {
   display: flex;
   justify-content: center;
   gap: 30px;
   margin-top: 40px;
   align-items: stretch;
+}
+
+.dev-section ul {
+  margin-left: 25px; 
+  font-size: 16px;
+  color: #333;
+  line-height: 1.6;
 }
 
 .cuadro {
@@ -248,7 +263,7 @@ main h1 {
   margin: 20px auto;
   border-radius: 15px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
+  max-width: 1200px;
 }
 
 .form-group {
@@ -383,16 +398,6 @@ h1 {
   object-fit: contain;
 }
 
-/* Nuevos /* Imagen del logo */estilos para cuadros 2x2 */
-.cuadros-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 40px;
-  max-width: 1000px;
-  margin: 0 auto 60px;
-  padding: 0 20px;
-}
-
 .cuadro {
   background-color: #d4f1f9;
   padding: 30px 20px;
@@ -413,5 +418,58 @@ h1 {
 
 body {
   background-color: white;
+}
+
+.doc-sidebar {
+  position: fixed;
+  top: 72px;                 /* alto aproximado de tu navbar */
+  left: 0;
+  width: 260px;
+  height: calc(100vh - 72px);
+  background: #ffffff;
+  border-right: 1px solid #e9eef3;
+  padding: 18px 16px;
+  overflow-y: auto;
+  z-index: 90;
+}
+
+/* Título y links */
+.doc-sidebar .toc-title {
+  font-weight: 700;
+  font-size: 16px;
+  color: #2b75d1;
+  margin-bottom: 10px;
+}
+
+.doc-sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.doc-sidebar a,
+.doc-sidebar a:visited,
+.doc-sidebar a:active {
+  color: #333 !important;
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: background .2s, color .2s;
+}
+
+.doc-sidebar a:hover {
+  background: #f5f9ff;
+  color: #2b75d1 !important;
+}
+
+.doc-sidebar a.active {
+  color: #b8e2f6; 
+  font-weight: bold;
+}
+
+main {
+  margin-left: 260px;
+  padding-left: 24px;  /* aire opcional */
 }
 
