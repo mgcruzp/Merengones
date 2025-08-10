@@ -26,17 +26,20 @@
       </ul>
     </nav>
   </header>
+  
+  <div class="doc-layout">
+  <aside class="doc-sidebar">
+    <div class="toc-title">Tabla de contenidos</div>
+    <nav>
+      <a th:href="@{/documentacion} + '#descripcion'">Descripción general</a>
+      <a th:href="@{/documentacion} + '#req-func'">Requerimientos funcionales</a>
+      <a th:href="@{/documentacion} + '#req-nofunc'">Requerimientos no funcionales</a>
+    </nav>
+  </aside>
+
 
  <main>
     <h1>Documentación del Proyecto</h1>
-      <aside class="doc-sidebar">
-        <div class="toc-title">Tabla de contenidos</div>
-        <nav>
-          <a th:href="@{/documentacion} + '#descripcion'">Descripción general</a>
-          <a th:href="@{/documentacion} + '#req-func'">Requerimientos funcionales</a>
-          <a th:href="@{/documentacion} + '#req-nofunc'">Requerimientos no funcionales</a>
-        </nav>
-      </aside>
       <section id="descripcion" class="dev-section">
       <h3><strong>Descripción general</strong></h3>
       <br>
@@ -135,5 +138,6 @@
       </ul>
     </section>
   </main>
+  </div>
 </body>
 </html>
