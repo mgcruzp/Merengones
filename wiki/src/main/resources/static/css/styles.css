@@ -432,6 +432,16 @@ h1 {
   object-fit: contain;
 }
 
+
+.adicion-img {
+  display: block;
+  margin: 15px auto; /* centrado y con un poco de espacio */
+  height: 300px;     /* más pequeño */
+  width: auto;       /* mantiene proporción */
+  object-fit: contain;
+}
+
+
 .cuadro {
   background-color: #d4f1f9;
   padding: 30px 20px;

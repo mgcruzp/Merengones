@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
   <link rel="stylesheet" th:href="@{/css/styles.css}" />
 </head>
 
@@ -8,7 +7,7 @@
   <header>
   <nav class="navbar">
       <div class="logito">
-        <img th:src="@{/images/Imagenlogo.png}" alt="Logo del proyecto" class="logito-img">
+        <img th:src="@{/images/Logo.png}" alt="Logo del proyecto" class="logito-img">
         <div class="logo">
           <span>Wiki</span><span class="highlight">Proyecto</span>
         </div>
@@ -35,7 +34,7 @@
 
       <!-- Líder general -->
       <div class="miembro">
-        <img src="images/imagesGabriela.jpg" alt="Gabriela Cruz" class="foto-perfil" />
+        <img th:src="@{images/Equipo/imagesGabriela.jpg}" alt="Gabriela Cruz" class="foto-perfil" />
         <h3>Gabriela Cruz</h3>
         <p><strong>Rol:</strong> Líder</p>
         <p><strong>Lenguajes:</strong> C++, Java, R, JavaFX, SQL</p>
@@ -44,7 +43,7 @@
 
       <!-- Líder de planeaciones -->
       <div class="miembro">
-        <img src="images/imagesValentina.png" alt="Valentina Carreño" class="foto-perfil" />
+        <img th:src="@{images/Equipo/imagesValentina.png}" alt="Valentina Carreño" class="foto-perfil" />
         <h3>Valentina Carreño</h3>
         <p><strong>Rol:</strong> Líder de planeación</p>
         <p><strong>Lenguajes:</strong> C++, Java, SQL</p>
@@ -53,7 +52,7 @@
 
       <!-- Líder técnico -->
       <div class="miembro">
-        <img src="images/imagesAngelica.jpg" alt="María Angélica Piedrahita Ramírez" class="foto-perfil" />
+        <img th:src="@{images/Equipo/imagesAngelica.jpg}" alt="María Angélica Piedrahita Ramírez" class="foto-perfil" />
         <h3>María Angélica Piedrahita Ramírez</h3>
         <p><strong>Rol:</strong> Líder Técnico</p>
         <p><strong>Lenguajes:</strong> C++, SQL, R, Java</p>
@@ -62,7 +61,7 @@
 
       <!-- Líder de pruebas -->
       <div class="miembro">
-        <img src="images/imagesSebastian.jpg" alt="Juan Sebastián Vargas Cortés" class="foto-perfil" />
+        <img th:src="@{images/Equipo/imagesSebastian.jpg}" alt="Juan Sebastián Vargas Cortés" class="foto-perfil" />
         <h3>Juan Sebastián Vargas Cortés</h3>
         <p><strong>Rol:</strong> Líder de Pruebas</p>
         <p><strong>Lenguajes:</strong> C++, Java, Kotlin, SQL</p>
@@ -71,7 +70,7 @@
 
       <!-- Desarrolladora -->
       <div class="miembro">
-        <img src="images/imagesVioleta.jpg" alt="Violeta Fajardo Calvachi" class="foto-perfil" />
+        <img th:src="@{images/Equipo/imagesVioleta.jpg}" alt="Violeta Fajardo Calvachi" class="foto-perfil" />
         <h3>Violeta Fajardo Calvachi</h3>
         <p><strong>Rol:</strong> Desarrolladora</p>
         <p><strong>Lenguajes:</strong> C++, Java, SQL, C#</p>
@@ -80,7 +79,7 @@
 
       <!-- Desarrolladora -->
       <div class="miembro">
-        <img src="images/imagesNatalia.jpg" alt="Natalia Ramírez Romero" class="foto-perfil" />
+        <img th:src="@{images/Equipo/imagesNatalia.jpg}" alt="Natalia Ramírez Romero" class="foto-perfil" />
 
         <h3>Natalia Ramírez Romero</h3>
         <p><strong>Rol:</strong> Desarrolladora</p>
