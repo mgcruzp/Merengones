@@ -190,15 +190,27 @@ h3 {
 }
 
 .dev-section-small {
-  background-color: #e8f4fd;   /* azul claro */
+  display: flex;
+  align-items: center;
+  gap: 10px; /* espacio entre icono y texto */
+  background-color: #e8f4fd;
   border-left: 6px solid #2b84e0;
-  padding: 20px;
-  margin: 30px auto;
-  max-width: 800px;
+  padding: 15px;
+  margin: 15px auto;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  font-family: 'Segoe UI', sans-serif;
+  max-width: 800px;
 }
+
+.dev-section-small i {
+  flex-shrink: 0; /* evita que el icono se reduzca */
+  font-size: 24px;
+  color: #3d3f43;
+}
+
+.dev-section-small p {
+  margin: 0;
+}
+
 
 
 .dev-section h2 {
@@ -374,6 +386,7 @@ h1 {
 .icon.purple { color: #9b59b6; }
 .icon.orange { color: #f39c12; }
 .icon.teal { color: #1abc9c; }
+.icon.gray { color: #333; }
 
 .form-group button {
   background-color: #2a7de1;
