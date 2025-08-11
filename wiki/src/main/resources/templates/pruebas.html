@@ -3,62 +3,163 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pruebas - WikiProyecto</title>
+
+  <!-- CSS principal -->
   <link rel="stylesheet" th:href="@{/css/styles.css}" />
+  <!-- Iconos FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
 <body>
-  <body>
+  <!-- NAVBAR -->
   <nav class="navbar">
-      <div class="logito">
-        <img th:src="@{/images/Logo.png}" alt="Logo del proyecto" class="logito-img">
-        <div class="logo">
-          <span>Wiki</span><span class="highlight">Proyecto</span>
-        </div>
+    <div class="logito">
+      <img th:src="@{/images/Logo.png}" alt="Logo del proyecto" class="logito-img">
+      <div class="logo">
+        <span>Wiki</span><span class="highlight">Proyecto</span>
       </div>
+    </div>
 
-      <ul class="nav-links">
-        <li><a th:href="@{/}">Inicio</a></li>
-        <li><a th:href="@{/equipo}">Equipo</a></li>
-        <li><a th:href="@{/documentacion}">Documentación</a></li>
-        <li><a th:href="@{/desarrollo}">Desarrollo</a></li>
-        <li><a th:href="@{/pruebas}" class="active">Pruebas</a></li>
-        <li><a th:href="@{/contacto}">Contacto</a></li>
-      </ul>
+    <ul class="nav-links">
+      <li><a th:href="@{/}">Inicio</a></li>
+      <li><a th:href="@{/equipo}">Equipo</a></li>
+      <li><a th:href="@{/documentacion}">Documentación</a></li>
+      <li><a th:href="@{/desarrollo}">Desarrollo</a></li>
+      <li><a th:href="@{/pruebas}" class="active">Pruebas</a></li>
+      <li><a th:href="@{/contacto}">Contacto</a></li>
+    </ul>
   </nav>
 
-  <h1>Pruebas del Proyecto</h1>
+  <!-- CONTENIDO PRINCIPAL -->
+  <section class="matriz-pruebas">
+    <h2>Matriz de Pruebas — Sebas</h2>
+    <p>Resumen de pruebas manuales (frontend) y automatizadas (backend) realizadas el día de hoy.</p>
 
-  <div class="cards">
-    <div class="card">
-      <i class="fas fa-check-circle icon green"></i>
-      <h3>Validación</h3>
-      <p>Se probaron todas las funciones para asegurar que cumplieran su propósito sin errores.</p>
+    <!-- Tabla FRONTEND -->
+    <h3>Frontend (manual)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Caso</th>
+            <th>Acción</th>
+            <th>Resultado observado</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>F1</td>
+            <td>Navegación del navbar</td>
+            <td>Click en Inicio/Equipo/Documentación/Desarrollo/Pruebas/Contacto</td>
+            <td>Cada enlace carga su vista correspondiente (200 OK)</td>
+            <td class="estado passed">Passed</td>
+          </tr>
+          <tr>
+            <td>F6</td>
+            <td>Formulario vacío</td>
+            <td>Enviar sin nombre/apellido</td>
+            <td>Muestra “Formulario enviado con éxito.” (sin validación por ahora)</td>
+            <td class="estado na">N/A</td>
+          </tr>
+          <tr>
+            <td>F7</td>
+            <td>Correo inválido</td>
+            <td>Enviar con correo “abc”</td>
+            <td>Muestra “Formulario enviado con éxito.” (sin validación por ahora)</td>
+            <td class="estado na">N/A</td>
+          </tr>
+          <tr>
+            <td>F8</td>
+            <td>Semestre fuera de rango</td>
+            <td>Enviar con semestre 17</td>
+            <td>Muestra “Formulario enviado con éxito.” (sin validación por ahora)</td>
+            <td class="estado na">N/A</td>
+          </tr>
+          <tr>
+            <td>F9</td>
+            <td>Formulario válido</td>
+            <td>Completar todo y enviar</td>
+            <td>Se muestra mensaje de éxito</td>
+            <td class="estado passed">Passed</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="card">
-      <i class="fas fa-bug icon red"></i>
-      <h3>Manejo de errores</h3>
-      <p>Simulación de errores comunes para garantizar estabilidad y retroalimentación clara.</p>
+
+    <!-- Tabla BACKEND -->
+    <h3>Backend (JUnit + MockMvc)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Ruta</th>
+            <th>Esperado</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>B1</td>
+            <td>GET /</td>
+            <td>200 + vista index</td>
+            <td class="estado passed">Passed</td>
+          </tr>
+          <tr>
+            <td>B2</td>
+            <td>GET /equipo</td>
+            <td>200 + vista equipo</td>
+            <td class="estado passed">Passed</td>
+          </tr>
+          <tr>
+            <td>B3</td>
+            <td>GET /documentacion</td>
+            <td>200 + vista documentación</td>
+            <td class="estado passed">Passed</td>
+          </tr>
+          <tr>
+            <td>B4</td>
+            <td>GET /desarrollo</td>
+            <td>200 + vista desarrollo</td>
+            <td class="estado passed">Passed</td>
+          </tr>
+          <tr>
+            <td>B5</td>
+            <td>GET /pruebas</td>
+            <td>200 + vista pruebas</td>
+            <td class="estado passed">Passed</td>
+          </tr>
+          <tr>
+            <td>B6</td>
+            <td>GET /contacto</td>
+            <td>200 + vista contacto</td>
+            <td class="estado passed">Passed</td>
+          </tr>
+          <tr>
+            <td>B7</td>
+            <td>POST /contacto (válido)</td>
+            <td>200 + modelo: contacto, mensaje</td>
+            <td class="estado passed">Passed</td>
+          </tr>
+          <tr>
+            <td>B8</td>
+            <td>POST /contacto (faltantes)</td>
+            <td>200 + modelo: contacto, mensaje</td>
+            <td class="estado passed">Passed</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="card">
-      <i class="fas fa-tachometer-alt icon blue"></i>
-      <h3>Rendimiento</h3>
-      <p>Pruebas de carga para verificar funcionamiento fluido con múltiples usuarios.</p>
-    </div>
-    <div class="card">
-      <i class="fas fa-laptop icon purple"></i>
-      <h3>Compatibilidad</h3>
-      <p>Funcionamiento verificado en varios navegadores y dispositivos.</p>
-    </div>
-    <div class="card">
-      <i class="fas fa-clipboard-check icon orange"></i>
-      <h3>Formularios</h3>
-      <p>Validaciones completas en entradas y retroalimentación visual efectiva.</p>
-    </div>
-    <div class="card">
-      <i class="fas fa-universal-access icon teal"></i>
-      <h3>Accesibilidad</h3>
-      <p>Pruebas con teclado y lectores para asegurar inclusión y navegación accesible.</p>
-    </div>
-  </div>
+
+    <!-- Comandos -->
+    <h3>Comandos usados:</h3>
+    <pre>
+./mvnw -Dtest=PaginasControllerWebTest test
+./mvnw -Dtest=ContactoControllerWebTest test
+./mvnw test
+    </pre>
+  </section>
 </body>
 </html>
