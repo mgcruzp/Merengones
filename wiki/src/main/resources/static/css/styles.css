@@ -421,7 +421,7 @@ h1 {
   display: flex;
   align-items: center;
   gap: 5px;               /* separación entre logo y texto */
-   font-eight: 500;
+  font-weight: 500;
   font-size: 14px;
 }
 
@@ -544,3 +544,57 @@ max-width: 100%;
 height: auto;
 }
 
+/* --- Tablas de la Matriz de Pruebas --- */
+.table-wrap {
+  overflow-x: auto;
+  margin: 12px 0 18px;
+}
+
+.tabla {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+  border: 1px solid #b8e2f6;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.tabla thead th {
+  background: #e8f4fd;
+  color: #2b84e0;
+  font-weight: 700;
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 1px solid #b8e2f6;
+}
+
+.tabla tbody td {
+  padding: 12px 14px;
+  color: #333;
+  border-bottom: 1px solid #edf6ff;
+}
+
+/* Pastillas de estado */
+.estado {
+  font-weight: 700;
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  letter-spacing: .3px;
+  text-transform: uppercase;
+}
+
+.estado.passed  { background: #e9f8ef; color: #2e7d32; border: 1px solid #bde5c8; }
+.estado.failed  { background: #fdecea; color: #c62828; border: 1px solid #f4c7c3; }
+.estado.blocked { background: #fff8e1; color: #ef6c00; border: 1px solid #ffe0b2; }
+.estado.na      { background: #eef2f7; color: #546e7a; border: 1px solid #d7dde4; }
+
+/* Detallecitos para la sección de pruebas */
+.matriz-pruebas h1,
+.matriz-pruebas h3 {
+  color: #2b84e0;
+  margin-bottom: 8px;
+}
