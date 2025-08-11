@@ -211,14 +211,70 @@
         <h3><strong>Base de datos</strong></h3>
       </section>
 
-      <section id="bd-mer" class="dev-section">
+      <section id="bd-mer" class="dev-section er">
         <h4><strong>Modelo Entidad-Relación (ER)</strong></h4>
-        <p>Aquí irá el MER...</p>
+        <p>El siguiente diagrama Entidad-Relación (ER) representa la estructura de la base de datos propuesta para el sistema, 
+          mostrando las entidades principales, sus atributos y las relaciones entre ellas. Este modelo permite visualizar 
+          cómo se organiza y conecta la información, sirviendo como base para el diseño e implementación del sistema. En el diagrama, 
+          PK (Primary Key) es una llave primaria, identificador único de cada registro en la tabla. No se repite y no puede ser nulo y
+          FK (Foreign Key) es una llave foránea, campo que establece una relación con la clave primaria de otra tabla para mantener 
+          la integridad referencial.</p>
+        <img th:src="@{/images/Diagramas/EntidadRelacion.jpg}" alt="Diagrama de Entidad-Relación" />
       </section>
+      
 
       <section id="bd-diccionario" class="dev-section">
         <h4><strong>Diccionario de datos</strong></h4>
-        <p>Aquí irá el diccionario de datos...</p>
+        <p><strong>Entidad: ROL</strong></p>
+  <ul>
+    <li><strong>PK:</strong> nombre : STRING</li>
+    <li><strong>Descripción:</strong> Tipo de rol del usuario (arrendador, arrentatario).</li>
+  </ul>
+  <br>
+
+  <p><strong>Entidad: USUARIO</strong></p>
+  <ul>
+    <li><strong>PK:</strong> id : STRING</li>
+    <li><strong>Atributos:</strong> nombre (STRING), apellido (STRING), correo (STRING), telefono (STRING), rol (STRING - FK a ROL.nombre).</li>
+  </ul>
+  <br>
+
+  <p><strong>Entidad: FINCA</strong></p>
+  <ul>
+    <li><strong>PK:</strong> id : LONG</li>
+    <li><strong>Atributos:</strong> titulo (STRING), descripcion (STRING), ubicacion (STRING), precio (LONG), disponible (BOOLEAN), propietaria (STRING - FK a USUARIO.id).</li>
+  </ul>
+  <br>
+
+  <p><strong>Entidad: SOLICITUD</strong></p>
+  <ul>
+    <li><strong>PK:</strong> id : LONG</li>
+    <li><strong>Atributos:</strong> fecha (LocalDate), estado (STRING), mensaje (STRING), finca (LONG - FK a FINCA.id), arrendador (STRING - FK a USUARIO.id).</li>
+  </ul>
+  <br>
+
+  <p><strong>Entidad: PAGO</strong></p>
+  <ul>
+    <li><strong>PK:</strong> id : LONG</li>
+    <li><strong>Atributos:</strong> monto (LONG), fecha (LocalDate), metodo (STRING), solicitud (LONG - FK a SOLICITUD.id).</li>
+  </ul>
+  <br>
+
+  <p><strong>Entidad: CALIFICACION</strong></p>
+  <ul>
+    <li><strong>PK:</strong> id : LONG</li>
+    <li><strong>Atributos:</strong> puntaje (INT), comentario (STRING), fecha (LocalDate), finca (LONG - FK a FINCA.id), evaluador (STRING - FK a USUARIO.id), evaluado (STRING - FK a USUARIO.id).</li>
+  </ul>
+  <br>
+
+  <p><strong>Relaciones:</strong></p>
+  <ul>
+    <li>Un ROL puede asignarse a muchos USUARIOS, pero cada USUARIO tiene un solo ROL.</li>
+    <li>Un USUARIO puede poseer varias FINCAS.</li>
+    <li>Una FINCA puede recibir múltiples SOLICITUDES.</li>
+    <li>Una SOLICITUD puede generar uno o varios PAGOS.</li>
+    <li>Un USUARIO puede emitir múltiples CALIFICACIONES.</li>
+    <li>Una FINCA puede recibir múltiples CALIFICACIONES.</li>
       </section>
         </main>
   </div>

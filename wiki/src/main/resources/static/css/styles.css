@@ -598,3 +598,11 @@ height: auto;
   color: #2b84e0;
   margin-bottom: 8px;
 }
+
+/* Tam de ER*/
+.er img {
+  display: block;
+  max-width: 90%; /* Nunca más grande que el cuadro */
+  height: auto;   /* Mantiene proporción */
+  margin: 0 auto; /* Centrada */
+}
