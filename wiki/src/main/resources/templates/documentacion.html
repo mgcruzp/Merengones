@@ -198,9 +198,14 @@
       </section>
 
       <section id="diag-despliegue" class="dev-section">
-        <h3><strong>Diagrama de despliegue</strong></h3>
-        <p>Aquí irá el diagrama de despliegue...</p>
-      </section>
+    <h3><strong>Diagrama de despliegue</strong></h3>
+    <p>
+        El diagrama de despliegue muestra la infraestructura física o virtual donde se ejecutará la aplicación. En este caso, la aplicación se ejecuta en una máquina virtual que contiene un servidor Apache, Kubernetes (K8s) para orquestación de contenedores, la aplicación web de Spring Boot y la base de datos JPA.
+    </p>
+    <img th:src="@{/images/Diagramas/Diagrama_Despliegue.png}" 
+    alt="Diagrama de despliegue del proyecto" 
+    class="diagrama-img"/>
+</section>
 
       <section id="bd" class="dev-section">
         <h3><strong>Base de datos</strong></h3>

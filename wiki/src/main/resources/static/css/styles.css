@@ -526,11 +526,21 @@ body {
 /* Contenido principal ocupa el resto */
 main { flex: 1;  }
 
+
 #diag-clases img {
   display: block;  
   align-self: center;        /* Hace que la imagen se comporte como un bloque */
   margin: 20px auto;       /* Centra horizontalmente */
   max-width: 100%;         /* Se ajusta al ancho del contenedor */
   height: auto;            /* Mantiene la proporción original */
+}
+
+.diagrama-img {
+ display: block;
+margin-left: auto;
+margin-right: auto;
+margin-top: 20px; 
+max-width: 100%;
+height: auto;
 }
 

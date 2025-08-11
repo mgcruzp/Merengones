@@ -1,63 +1,77 @@
-<!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8">
-  <title>Inicio</title>
-  <link rel="stylesheet" th:href="@{/css/styles.css}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-</head>
+  <!DOCTYPE html>
+  <html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <title>Inicio</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  </head>
 
-<body>
-  <header>
-    <nav class="navbar">
-      <div class="logito">
-        <img th:src="@{/images/Logo.png}" alt="Logo del proyecto" class="logito-img">
-        <div class="logo">
-          <span>Wiki</span><span class="highlight">Proyecto</span>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="logito">
+          <img th:src="@{/images/Logo.png}" alt="Logo del proyecto" class="logito-img">
+          <div class="logo">
+            <span>Wiki</span><span class="highlight">Proyecto</span>
+          </div>
         </div>
+
+    <ul class="nav-links">
+      <li><a th:href="@{/}" class="active">Inicio</a></li>
+      <li><a th:href="@{/equipo}">Equipo</a></li>
+      <li><a th:href="@{/documentacion}">Documentación</a></li>
+      <li><a th:href="@{/desarrollo}">Desarrollo</a></li>
+      <li><a th:href="@{/pruebas}">Pruebas</a></li>
+      <li><a th:href="@{/contacto}">Contacto</a></li>
+    </ul>
+  </nav>
+
+    </header>
+
+    <main>
+      <!-- Imagen de bienvenida -->
+      <div class="imagen-bienvenida">
+        <img th:src="@{/images/ImagenBienvenida.png}" alt="Imagen de bienvenida" />
       </div>
 
-  <ul class="nav-links">
-    <li><a th:href="@{/}" class="active">Inicio</a></li>
-    <li><a th:href="@{/equipo}">Equipo</a></li>
-    <li><a th:href="@{/documentacion}">Documentación</a></li>
-    <li><a th:href="@{/desarrollo}">Desarrollo</a></li>
-    <li><a th:href="@{/pruebas}">Pruebas</a></li>
-    <li><a th:href="@{/contacto}">Contacto</a></li>
-  </ul>
-</nav>
+      <!-- Título de sección -->
+      <h1>¿Qué es esta wiki?</h1>
 
-  </header>
+      <!-- Cada texto en su propio cuadro con párrafo -->
+      <section class="dev-section-small">
+        <i class="fa-regular fa-file fa-2xl" style="color: #3d3f43;"></i> 
+        <p>Esta wiki ha sido creada como un espacio centralizado para organizar, documentar y compartir toda la información relevante del proyecto de arrienda tu finca.</p>
+      </section>
 
-  <main>
-    <!-- Imagen de bienvenida -->
-    <div class="imagen-bienvenida">
-      <img th:src="@{/images/ImagenBienvenida.png}" alt="Imagen de bienvenida" />
+      <section class="dev-section-small">
+        <i class="fa-solid fa-bullseye fa-2xl" style="color: #3d3f43;"></i>
+        <p>Nuestro propósito es facilitar la colaboración, mantener la trazabilidad de los avances y permitir que cualquier persona involucrada pueda consultar y aportar contenido de manera clara y estructurada.</p>
+      </section>
+
+      <section class="dev-section-small">
+        <i class="fa-solid fa-user-group fa-2xl"style="color: #3d3f43;"></i>
+        <p>A medida que el proyecto evolucione, esta wiki también lo hará, asimismo, este espacio está diseñado para fortalecer el trabajo en equipo y fomentar la transparencia durante todo el ciclo de vida del proyecto.</p>
+      </section>
+
+
+      <section class="historial-versiones">
+    <h1>Historial de Cambios</h1>
+    <div class="historial-lista">
+        <div class="historial-item" th:each="commit : ${commits}">
+            <h3><span th:text="${commit.message}">Mensaje del Commit</span></h3>
+            <p>
+                <strong>Autor:</strong> <span th:text="${commit.author}">Autor del Commit</span><br>
+                <strong>Fecha:</strong> <span th:text="${commit.date}">Fecha del Commit</span>
+            </p>
+        </div>
+        <p th:if="${#lists.isEmpty(commits)}">No se encontró historial de versiones.</p>
     </div>
-
-    <!-- Título de sección -->
-    <h1>¿Qué es esta wiki?</h1>
-
-    <!-- Cada texto en su propio cuadro con párrafo -->
-    <section class="dev-section-small">
-      <i class="fa-regular fa-file fa-2xl" style="color: #3d3f43;"></i> 
-      <p>Esta wiki ha sido creada como un espacio centralizado para organizar, documentar y compartir toda la información relevante del proyecto de arrienda tu finca.</p>
-    </section>
-
-    <section class="dev-section-small">
-      <i class="fa-solid fa-bullseye fa-2xl" style="color: #3d3f43;"></i>
-      <p>Nuestro propósito es facilitar la colaboración, mantener la trazabilidad de los avances y permitir que cualquier persona involucrada pueda consultar y aportar contenido de manera clara y estructurada.</p>
-    </section>
-
-    <section class="dev-section-small">
-      <i class="fa-solid fa-user-group fa-2xl"style="color: #3d3f43;"></i>
-      <p>A medida que el proyecto evolucione, esta wiki también lo hará, asimismo, este espacio está diseñado para fortalecer el trabajo en equipo y fomentar la transparencia durante todo el ciclo de vida del proyecto.</p>
-    </section>
+</section>
 
 
+      <img th:src="@{/images/ArriendaTuFinca.png}" alt="Imagen de arrienda tu finca" class="adicion-img"/>
 
-    <img th:src="@{/images/ArriendaTuFinca.png}" alt="Imagen de arrienda tu finca" class="adicion-img"/>
-
-  </main>
-</body>
-</html>
+    </main>
+  </body>
+  </html>
