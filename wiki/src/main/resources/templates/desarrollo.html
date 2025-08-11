@@ -40,14 +40,14 @@
     <h1>Desarrollo del Proyecto</h1>
 
    <section id="endpoints" class="dev-section">
-    <h2>Endpoints del Backend</h2>
+    <h2><strong>Endpoints del Backend</strong></h2>
     <p>
         Estos son los puntos de acceso (endpoints) del backend, diseñados para soportar todas las historias de usuario del proyecto.
     </p>
     <ul class="endpoints-list">
-        <h3>Historias de Usuario (Arrendador)</h3>
-        
-        <h4>Gestión de Cuentas</h4>
+    <h2 class="grp-title">Historias de Usuario (Arrendador)</h2>
+    <h4 class="grp-subtitle">Gestión de Cuentas</h4>
+        <ul class="endpoints-list"></ul>
         <li>
             <strong>POST /api/arrendador/cuentas</strong>
             <p>HUA.1. Creación de cuenta de arrendador.</p>
@@ -61,7 +61,8 @@
             <p>HUA.3. Autenticación de usuario arrendador.</p>
         </li>
 
-        <h4>Gestión de Propiedades</h4>
+        <h4 class="grp-subtitle">Gestión de Propiedades</h4>
+        <ul class="endpoints-list"></ul>
         <li>
             <strong>GET /api/propiedades/arrendador/{id}</strong>
             <p>HUA.4. Ver las propiedades asociadas a un arrendador específico.</p>
@@ -83,7 +84,8 @@
             <p>HUA.8. Desactivar una propiedad para que no esté disponible.</p>
         </li>
 
-        <h4>Gestión de Solicitudes y Calificaciones</h4>
+        <h4 class="grp-subtitle">Gestión de Solicitudes y Calificaciones</h4>
+        <ul class="endpoints-list"></ul>
         <li>
             <strong>GET /api/solicitudes/arriendo/arrendador/{id}</strong>
             <p>HUA.9. Ver las solicitudes de arriendo recibidas.</p>
@@ -103,9 +105,10 @@
     </ul>
 
     <ul class="endpoints-list">
-        <h3>Historias de Usuario (Administrador)</h3>
+        <h3 class="grp-title">Historias de Usuario (Administrador)</h3>
         
-        <h4>Gestión de Cuentas</h4>
+        <h4 class="grp-subtitle">Gestión de Cuentas</h4>
+        <ul class="endpoints-list"></ul>
         <li>
             <strong>POST /api/administrador/cuentas</strong>
             <p>HUA.13. Creación de cuenta de administrador.</p>

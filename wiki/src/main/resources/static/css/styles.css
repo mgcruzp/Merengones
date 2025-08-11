@@ -599,10 +599,38 @@ height: auto;
   margin-bottom: 8px;
 }
 
-/* Tam de ER*/
+/* Tamaño para los diagramas .er*/
 .er img {
   display: block;
   max-width: 90%; /* Nunca más grande que el cuadro */
   height: auto;   /* Mantiene proporción */
   margin: 0 auto; /* Centrada */
+}
+
+/*Historial de Cambios*/
+.historial-item {
+  background-color: #e8f4fd;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.historial-item h3 {
+  margin: 0 0 6px 0;
+  font-size: 1.05rem;
+  font-weight: bold;
+  color: #2b84e0;
+}
+
+.commit-info {
+  display: flex;
+  flex-direction: column; /* hace que autor y fecha queden en líneas separadas */
+  gap: 2px;
+}
+
+.commit-info p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #333;
 }
