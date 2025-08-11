@@ -150,18 +150,31 @@
       </ul>
     </section>
 
-    <section id="diag-arquitectura" class="dev-section">
+    <section id="diag-arquitectura" class="dev-section er">
         <h3><strong>Diagrama de arquitectura</strong></h3>
-        <p>Aquí irá el diagrama de arquitectura...</p>
+        <p>El diagrama de arquitectura del sistema ArriendaTuFinca describe la organización de sus componentes y la interacción entre las distintas capas. </p>
+         <li><strong>Capa Cliente:</strong> Usuarios arrendadores y arrendatarios interactúan con la aplicación a través de una interfaz web desarrollada en Angular.</li>
+        <li><strong>Capa de Entrada:</strong> Gestiona las solicitudes HTTP(S) mediante Ingress y control de CORS, garantizando la seguridad y el manejo adecuado de peticiones REST/JSON.</li>
+        <li><strong>Capa de Seguridad:</strong> Implementada con Spring Security y autenticación JWT, se encarga de proteger los accesos a los servicios internos del sistema.</li>
+        <li><strong>Capa de Aplicación:</strong> Desarrollada con Spring Boot y JPA, contiene los servicios de Autenticación, Propiedades, Reservas y Pagos, encargados de la lógica de negocio.</li>
+        <li><strong>Capa de Datos:</strong> Administra la persistencia de información en la base de datos, almacenando propiedades, usuarios, reservas y pagos.</li>
+        <li><strong>Integración con módulo de pagos:</strong> El servicio de pagos interactúa con el sistema externo para procesar transacciones y devolver los resultados al sistema.</li>
+
+        <img th:src="@{/images/Diagramas/DiagramaArquitectura.jpg}" alt="Diagrama de Arquitectura" />
       </section>
 
       <section id="diag-ref" class="dev-section">
         <h3><strong>Diagramas de referencia C4</strong></h3>
       </section>
 
-      <section id="diag-contexto" class="dev-section">
+      <section id="diag-contexto" class="dev-section er">
         <h4><strong>Diagrama de Contexto</strong></h4>
-        <p>Aquí irá el diagrama de contexto...</p>
+        <p>Este diagrama representa cómo los usuarios arrendadores y arrendatarios se comunican con la plataforma para 
+          publicar, buscar y reservar propiedades, así como gestionar disponibilidad, precios y calificaciones. 
+          También se visualiza la relación con el módulo de pagos para procesar transacciones y con la base de datos, 
+          donde se almacenan y consultan las propiedades, usuarios, reservas y pagos, garantizando el flujo de información 
+          necesario para el funcionamiento del sistema.</p>
+        <img th:src="@{/images/Diagramas/DiagramaContexto.jpg}" alt="Diagrama de Contexto" />
       </section>
 
       <section id="diag-contenedor" class="dev-section">
@@ -226,57 +239,58 @@
       <section id="bd-diccionario" class="dev-section">
         <h4><strong>Diccionario de datos</strong></h4>
         <p><strong>Entidad: ROL</strong></p>
-  <ul>
-    <li><strong>PK:</strong> nombre : STRING</li>
-    <li><strong>Descripción:</strong> Tipo de rol del usuario (arrendador, arrentatario).</li>
-  </ul>
-  <br>
+          <ul>
+            <li><strong>PK:</strong> nombre : STRING</li>
+            <li><strong>Descripción:</strong> Tipo de rol del usuario (arrendador, arrentatario).</li>
+          </ul>
+          <br>
 
-  <p><strong>Entidad: USUARIO</strong></p>
-  <ul>
-    <li><strong>PK:</strong> id : STRING</li>
-    <li><strong>Atributos:</strong> nombre (STRING), apellido (STRING), correo (STRING), telefono (STRING), rol (STRING - FK a ROL.nombre).</li>
-  </ul>
-  <br>
+          <p><strong>Entidad: USUARIO</strong></p>
+          <ul>
+            <li><strong>PK:</strong> id : STRING</li>
+            <li><strong>Atributos:</strong> nombre (STRING), apellido (STRING), correo (STRING), telefono (STRING), rol (STRING - FK a ROL.nombre).</li>
+          </ul>
+          <br>
 
-  <p><strong>Entidad: FINCA</strong></p>
-  <ul>
-    <li><strong>PK:</strong> id : LONG</li>
-    <li><strong>Atributos:</strong> titulo (STRING), descripcion (STRING), ubicacion (STRING), precio (LONG), disponible (BOOLEAN), propietaria (STRING - FK a USUARIO.id).</li>
-  </ul>
-  <br>
+          <p><strong>Entidad: FINCA</strong></p>
+          <ul>
+            <li><strong>PK:</strong> id : LONG</li>
+            <li><strong>Atributos:</strong> titulo (STRING), descripcion (STRING), ubicacion (STRING), precio (LONG), disponible (BOOLEAN), propietaria (STRING - FK a USUARIO.id).</li>
+          </ul>
+          <br>
 
-  <p><strong>Entidad: SOLICITUD</strong></p>
-  <ul>
-    <li><strong>PK:</strong> id : LONG</li>
-    <li><strong>Atributos:</strong> fecha (LocalDate), estado (STRING), mensaje (STRING), finca (LONG - FK a FINCA.id), arrendador (STRING - FK a USUARIO.id).</li>
-  </ul>
-  <br>
+          <p><strong>Entidad: SOLICITUD</strong></p>
+          <ul>
+            <li><strong>PK:</strong> id : LONG</li>
+            <li><strong>Atributos:</strong> fecha (LocalDate), estado (STRING), mensaje (STRING), finca (LONG - FK a FINCA.id), arrendador (STRING - FK a USUARIO.id).</li>
+          </ul>
+          <br>
 
-  <p><strong>Entidad: PAGO</strong></p>
-  <ul>
-    <li><strong>PK:</strong> id : LONG</li>
-    <li><strong>Atributos:</strong> monto (LONG), fecha (LocalDate), metodo (STRING), solicitud (LONG - FK a SOLICITUD.id).</li>
-  </ul>
-  <br>
+          <p><strong>Entidad: PAGO</strong></p>
+          <ul>
+            <li><strong>PK:</strong> id : LONG</li>
+            <li><strong>Atributos:</strong> monto (LONG), fecha (LocalDate), metodo (STRING), solicitud (LONG - FK a SOLICITUD.id).</li>
+          </ul>
+          <br>
 
-  <p><strong>Entidad: CALIFICACION</strong></p>
-  <ul>
-    <li><strong>PK:</strong> id : LONG</li>
-    <li><strong>Atributos:</strong> puntaje (INT), comentario (STRING), fecha (LocalDate), finca (LONG - FK a FINCA.id), evaluador (STRING - FK a USUARIO.id), evaluado (STRING - FK a USUARIO.id).</li>
-  </ul>
-  <br>
+          <p><strong>Entidad: CALIFICACION</strong></p>
+          <ul>
+            <li><strong>PK:</strong> id : LONG</li>
+            <li><strong>Atributos:</strong> puntaje (INT), comentario (STRING), fecha (LocalDate), finca (LONG - FK a FINCA.id), evaluador (STRING - FK a USUARIO.id), evaluado (STRING - FK a USUARIO.id).</li>
+          </ul>
+          <br>
 
-  <p><strong>Relaciones:</strong></p>
-  <ul>
-    <li>Un ROL puede asignarse a muchos USUARIOS, pero cada USUARIO tiene un solo ROL.</li>
-    <li>Un USUARIO puede poseer varias FINCAS.</li>
-    <li>Una FINCA puede recibir múltiples SOLICITUDES.</li>
-    <li>Una SOLICITUD puede generar uno o varios PAGOS.</li>
-    <li>Un USUARIO puede emitir múltiples CALIFICACIONES.</li>
-    <li>Una FINCA puede recibir múltiples CALIFICACIONES.</li>
-      </section>
-        </main>
-  </div>
+          <p><strong>Relaciones:</strong></p>
+          <ul>
+            <li>Un ROL puede asignarse a muchos USUARIOS, pero cada USUARIO tiene un solo ROL.</li>
+            <li>Un USUARIO puede poseer varias FINCAS.</li>
+            <li>Una FINCA puede recibir múltiples SOLICITUDES.</li>
+            <li>Una SOLICITUD puede generar uno o varios PAGOS.</li>
+            <li>Un USUARIO puede emitir múltiples CALIFICACIONES.</li>
+            <li>Una FINCA puede recibir múltiples CALIFICACIONES.</li>
+              </section>
+                
+</main>
+</div>
 </body>
 </html>
