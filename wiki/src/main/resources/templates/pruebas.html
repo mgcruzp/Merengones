@@ -29,14 +29,12 @@
   <main>
     <section class="dev-section matriz-pruebas">
       <h1>Matriz de Pruebas</h1>
-      <p>Casos de prueba de <strong>frontend</strong>, <strong>backend</strong> e <strong>integración</strong> escritos con lenguaje sencillo para que todo el equipo los entienda.</p>
+      <p>Casos de prueba divididos en <strong>Backend/API</strong> y <strong>Frontend/UI</strong> según las HUAs para el proyecto.</p>
 
-      <!-- Leyenda de estados -->
+      <!-- Leyenda -->
       <div class="table-wrap">
         <table class="tabla">
-          <thead>
-            <tr><th colspan="6">Estados</th></tr>
-          </thead>
+          <thead><tr><th colspan="6">Estados</th></tr></thead>
           <tbody>
             <tr>
               <td><span class="estado passed">PASSED</span></td><td>Salió como se esperaba.</td>
@@ -47,100 +45,139 @@
         </table>
       </div>
 
-      <!-- Matriz general (sin HUA) -->
+      <!-- BACKEND / API -->
+      <h3 style="margin-top:22px;">Backend / API</h3>
       <div class="table-wrap">
         <table class="tabla">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Módulo</th>
-              <th>Caso</th>
-              <th>Datos / Precondiciones</th>
-              <th>Pasos clave</th>
-              <th>Esperado</th>
-              <th>Obtenido</th>
-              <th>Estado</th>
+              <th>ID</th><th>Módulo</th><th>Caso</th><th>Datos / Precondiciones</th>
+              <th>Pasos / Endpoint</th><th>Esperado</th><th>Obtenido</th><th>Estado</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>BE-01</td><td>Usuarios</td><td>Crear cuenta con datos válidos</td>
-              <td>Correo libre; contraseña fuerte</td>
+              <td>BE-HUA13-01</td><td>Auth</td><td>Crear cuenta con datos válidos</td>
+              <td>JSON con nombres, apellidos, correo único, contraseña válida</td>
               <td>POST /auth/registro</td>
-              <td>201 y registro en BD</td>
-              <td>201 y fila creada</td>
-              <td><span class="estado passed">PASSED</span></td>
+              <td>201; usuario creado en BD; estado=CREADA</td><td>-</td><td><span class="estado na">N/A</span></td>
             </tr>
             <tr>
-              <td>BE-02</td><td>Usuarios</td><td>Rechazar contraseña débil</td>
-              <td>Contraseña “abc123”</td>
-              <td>POST /auth/registro</td>
-              <td>400 con mensaje de política</td>
-              <td>400; “contraseña insegura”</td>
-              <td><span class="estado passed">PASSED</span></td>
+              <td>BE-HUA14-01</td><td>Auth</td><td>Activar cuenta con token válido</td>
+              <td>Usuario creado; token de activación vigente</td>
+              <td>GET /auth/activate?token=...</td>
+              <td>200; usuario → ACTIVA</td><td>-</td><td><span class="estado na">N/A</span></td>
             </tr>
             <tr>
-              <td>BE-03</td><td>Auth</td><td>Login correcto</td>
-              <td>Cuenta activa</td>
+              <td>BE-HUA15-01</td><td>Auth</td><td>Autenticación correcta</td>
+              <td>Usuario ACTIVO; credenciales válidas</td>
               <td>POST /auth/login</td>
-              <td>200 + JWT</td>
-              <td>200 + JWT</td>
-              <td><span class="estado passed">PASSED</span></td>
+              <td>200; JWT válido devuelto</td><td>-</td><td><span class="estado na">N/A</span></td>
             </tr>
             <tr>
-              <td>BE-04</td><td>Propiedades</td><td>Crear finca</td>
-              <td>Usuario arrendatario autenticado</td>
-              <td>POST /fincas</td>
-              <td>201 y finca del usuario</td>
-              <td>201; finca #42</td>
-              <td><span class="estado passed">PASSED</span></td>
+              <td>BE-HUA16-01</td><td>Fincas</td><td>Búsqueda por filtros</td>
+              <td>Fincas en BD; municipio y capacidad</td>
+              <td>GET /fincas?municipio=...&capacidadMin=...</td>
+              <td>200; solo fincas que cumplen; columnas básicas</td><td>-</td><td><span class="estado na">N/A</span></td>
             </tr>
             <tr>
-              <td>FE-01</td><td>Registro</td><td>Validaciones de formulario</td>
-              <td>Correo inválido; contraseña corta</td>
-              <td>Llenar y enviar</td>
-              <td>No deja enviar; mensajes junto a campos</td>
-              <td>Mensajes claros</td>
-              <td><span class="estado passed">PASSED</span></td>
+              <td>BE-HUA17-01</td><td>Solicitudes</td><td>Crear solicitud con validaciones</td>
+              <td>JWT; fechas válidas; cantidad ≤ capacidad</td>
+              <td>POST /solicitudes {fincaId, fechaInicio, fechaFin, cantidad}</td>
+              <td>201; estado inicial correcto; orden desc por creación</td><td>-</td><td><span class="estado na">N/A</span></td>
             </tr>
             <tr>
-              <td>FE-02</td><td>Login</td><td>Error con credenciales</td>
-              <td>Usuario inexistente</td>
-              <td>Enviar formulario</td>
-              <td>“Usuario o contraseña inválidos”</td>
-              <td>Alerta visible</td>
-              <td><span class="estado passed">PASSED</span></td>
+              <td>BE-HUA18-01</td><td>Solicitudes</td><td>Listar mis solicitudes</td>
+              <td>JWT; existen solicitudes</td>
+              <td>GET /solicitudes/mias</td>
+              <td>200; campos: predio, fechas, valor, estado; ordenadas desc</td><td>-</td><td><span class="estado na">N/A</span></td>
             </tr>
             <tr>
-              <td>INT-01</td><td>Flujo</td><td>Publicar → solicitar → aceptar → pagar</td>
-              <td>Usuario A publica; B solicita</td>
-              <td>Crear finca, solicitar, aceptar, pagar</td>
-              <td>Arriendo pagado en historial</td>
-              <td>Se ve en historial</td>
-              <td><span class="estado passed">PASSED</span></td>
+              <td>BE-HUA19-01</td><td>Pagos</td><td>Registrar pago</td>
+              <td>Solicitud en POR_PAGO; banco y cuenta</td>
+              <td>POST /pagos {solicitudId, valor, banco, numeroCuenta}</td>
+              <td>201; solicitud → PAGADA</td><td>-</td><td><span class="estado na">N/A</span></td>
+            </tr>
+            <tr>
+              <td>BE-HUA20-01</td><td>Calificaciones</td><td>Calificar finca</td>
+              <td>Solicitud entregada; puntaje 1..5; comentario</td>
+              <td>POST /calificaciones/finca {solicitudId, puntaje, comentario}</td>
+              <td>201; recálculo promedio finca</td><td>-</td><td><span class="estado na">N/A</span></td>
+            </tr>
+            <tr>
+              <td>BE-HUA21-01</td><td>Calificaciones</td><td>Calificar arrendatario</td>
+              <td>Solicitud entregada; puntaje 1..5; comentario</td>
+              <td>POST /calificaciones/arrendador {solicitudId, puntaje, comentario}</td>
+              <td>201; actualiza promedio arrendador; si ambas listas → CERRADA</td><td>-</td><td><span class="estado na">N/A</span></td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <!-- Tabla original de contacto (se conserva) -->
-      <h3>Casos del formulario de contacto</h3>
+      <!-- FRONTEND / UI -->
+      <h3 style="margin-top:22px;">Frontend / UI</h3>
       <div class="table-wrap">
         <table class="tabla">
           <thead>
             <tr>
-              <th>ID</th><th>Caso</th><th>Esperado</th><th>Obtenido</th><th>Estado</th>
+              <th>ID</th><th>Módulo</th><th>Caso</th><th>Datos / Precondiciones</th>
+              <th>Pasos clave</th><th>Esperado (UI)</th><th>Obtenido</th><th>Estado</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>TC01</td><td>Enviar formulario completo</td><td>Formulario enviado con éxito</td><td>Formulario enviado con éxito</td><td><span class="estado passed">PASSED</span></td>
+              <td>FE-HUA13-01</td><td>Registro</td><td>Validaciones de formulario</td>
+              <td>Correo inválido; contraseña corta</td>
+              <td>Llenar y enviar</td>
+              <td>No permite enviar; mensajes junto a cada campo; botón deshabilitado hasta corregir</td><td>-</td><td><span class="estado na">N/A</span></td>
             </tr>
             <tr>
-              <td>TC02</td><td>Nombre y apellido vacíos</td><td>Error de validación</td><td>Formulario enviado con éxito</td><td><span class="estado na">N/A</span></td>
+              <td>FE-HUA14-01</td><td>Activación</td><td>Flujo por enlace</td>
+              <td>URL de activación válida</td>
+              <td>Abrir enlace</td>
+              <td>Toast “Cuenta activada” + enlace a Iniciar sesión</td><td>-</td><td><span class="estado na">N/A</span></td>
             </tr>
             <tr>
-              <td>TC03</td><td>Correo inválido</td><td>Error: correo no válido</td><td>Error: correo no válido</td><td><span class="estado passed">PASSED</span></td>
+              <td>FE-HUA15-01</td><td>Login</td><td>Error visible y redirección</td>
+              <td>Credenciales incorrectas y luego correctas</td>
+              <td>Enviar → ver error → reenviar</td>
+              <td>Error legible; con válidas redirige al inicio</td><td>-</td><td><span class="estado na">N/A</span></td>
+            </tr>
+            <tr>
+              <td>FE-HUA16-01</td><td>Fincas</td><td>Listado y filtros</td>
+              <td>Datos existentes</td>
+              <td>Abrir búsqueda; aplicar filtros</td>
+              <td>Columnas: miniatura, nombre, dpto, municipio, enlace a detalle; resultados cambian con filtros</td><td>-</td><td><span class="estado na">N/A</span></td>
+            </tr>
+            <tr>
+              <td>FE-HUA17-01</td><td>Solicitud</td><td>Validaciones de fechas y cupo</td>
+              <td>Fechas inválidas; cantidad &gt; capacidad</td>
+              <td>Desde detalle → “Solicitar” → enviar</td>
+              <td>Bloquea envío con mensajes claros; con datos válidos confirma</td><td>-</td><td><span class="estado na">N/A</span></td>
+            </tr>
+            <tr>
+              <td>FE-HUA18-01</td><td>Mis solicitudes</td><td>Tabla y acciones según estado</td>
+              <td>Solicitudes en varios estados</td>
+              <td>Abrir “Mis solicitudes”</td>
+              <td>Se ven columnas; si POR_PAGO aparece “Pagar”; si POR_CALIFICAR aparece “Calificar”</td><td>-</td><td><span class="estado na">N/A</span></td>
+            </tr>
+            <tr>
+              <td>FE-HUA19-01</td><td>Pago</td><td>Valor autollenado y selección de banco</td>
+              <td>Solicitud POR_PAGO</td>
+              <td>Click “Pagar” → completar</td>
+              <td>Valor readonly correcto; combo banco; máscara para número de cuenta; confirmación</td><td>-</td><td><span class="estado na">N/A</span></td>
+            </tr>
+            <tr>
+              <td>FE-HUA20-01</td><td>Calificar finca</td><td>Rango 1..5 y comentario</td>
+              <td>Solicitud POR_CALIFICAR</td>
+              <td>Enviar 0 o 6 → luego válido</td>
+              <td>Bloquea 0/6; permite 1..5; muestra éxito y refresca estado</td><td>-</td><td><span class="estado na">N/A</span></td>
+            </tr>
+            <tr>
+              <td>FE-HUA21-01</td><td>Calificar arrendatario</td><td>Cierre al completar ambas</td>
+              <td>Finca ya calificada</td>
+              <td>Enviar calificación</td>
+              <td>Éxito; si ambas completas, estado CERRADA en la fila</td><td>-</td><td><span class="estado na">N/A</span></td>
             </tr>
           </tbody>
         </table>
@@ -149,8 +186,8 @@
       <h3>Comandos útiles</h3>
       <pre>
 ./mvnw -q -Dtest=ContactoControllerWebTest test
-# (Sugeridos si los crean)
-./mvnw -q -Dtest=AuthControllerTest,FincasControllerTest,PagosControllerTest test
+# Sugeridos (si los crean a futuro)
+./mvnw -q -Dtest=AuthControllerTest,FincasControllerTest,PagosControllerTest,CalificacionesControllerTest test
       </pre>
     </section>
   </main>
