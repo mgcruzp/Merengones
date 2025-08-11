@@ -1,6 +1,7 @@
 // contacto.js
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById('contactForm');
+  if (!form) return;
 
   // Campos y reglas
   const fields = {
@@ -30,7 +31,8 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     descripcion: {
       el: document.getElementById('descripcion'),
-      required: true
+      required: true,
+      max: 300 // si quieres otro tope para descripción
     }
   };
 
@@ -125,13 +127,25 @@ document.addEventListener("DOMContentLoaded", function () {
   // Listeners de entrada: normalización, contador y validación en vivo
   Object.keys(fields).forEach(key => {
     const f = fields[key];
+    if (!f.el) return;
+
+    // Bloquea tecleo cuando ya está en el máximo (permite borrar/navegar/pegar sobre selección)
+    f.el.addEventListener('keydown', (e) => {
+      if (!f.max) return;
+      const allowed = ['Backspace','Delete','ArrowLeft','ArrowRight','Tab','Home','End','Enter'];
+      const isShortcut = e.ctrlKey || e.metaKey;
+      const hasSelection = f.el.selectionStart !== f.el.selectionEnd; // si hay selección, permitir sobreescribir
+
+      if (!allowed.includes(e.key) && !isShortcut && !hasSelection && f.el.value.length >= f.max) {
+        e.preventDefault();
+      }
+    });
 
     f.el.addEventListener('input', () => {
       // Normalización por campo
       if (f.noDiacritics) {
         const pos = f.el.selectionStart;
         f.el.value = normalizeNoDiacritics(f.el.value);
-        // mantiene posición del cursor
         try { f.el.setSelectionRange(pos, pos); } catch (_) {}
       } else if (key === 'correo') {
         const pos = f.el.selectionStart;
@@ -141,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
         f.el.value = f.el.value.toUpperCase();
       }
 
-      // Límite duro de caracteres
+      // Límite duro de caracteres (salvavidas para pegado)
       if (f.max && f.el.value.length > f.max) {
         f.el.value = f.el.value.slice(0, f.max);
       }
@@ -160,10 +174,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     Object.keys(fields).forEach(key => {
       const f = fields[key];
+      if (!f.el) return;
+
       // Normalización final
-      if (f.noDiacritics)      f.el.value = normalizeNoDiacritics(f.el.value);
+      if (f.noDiacritics)       f.el.value = normalizeNoDiacritics(f.el.value);
       else if (key === 'correo') f.el.value = normalizeEmail(f.el.value);
-      else                      f.el.value = f.el.value.toUpperCase();
+      else                       f.el.value = f.el.value.toUpperCase();
 
       updateCounter(key);
       if (!validateField(key)) ok = false;
@@ -171,7 +187,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!ok) {
       e.preventDefault(); // Evita enviar si hay errores
-      // Lleva foco al primer campo con error
       const firstErr = document.querySelector('.is-invalid');
       if (firstErr) firstErr.focus();
     }
