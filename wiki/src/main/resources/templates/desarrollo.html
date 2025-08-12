@@ -39,10 +39,68 @@
 <main>
     <h1>Desarrollo del Proyecto</h1>
 
-    <section id= "endpoints"class="dev-section">
-      <h2>Endpoints del Backend</h2>
-      <p>Explicación de los endpoints que usamos para la comunicación con el servidor.</p>
-    </section>
+   <section id="endpoints" class="dev-section">
+    <h3><strong>Endpoints del Backend</strong></h3>
+    <br>
+    <p>
+        Estos son los puntos de acceso (endpoints) del backend, diseñados para soportar todas las historias de usuario del proyecto.
+    </p>
+    <br>
+    <h2>Historias de Usuario (Arrendador)</h2>
+    <br>
+    <h4>GESTIÓN DE CUENTAS</h4>
+    <br>
+    <ul>
+        <li><strong>POST /api/arrendador/cuentas: </strong>HUA.1. Creación de cuenta de arrendador.</li>
+        <li><strong>PUT /api/arrendador/activar/{token}: </strong>HUA.2. Activación de cuenta por medio de un token.</li>
+        <li><strong>POST /api/arrendador/login: </strong>HUA.3. Autenticación de usuario arrendador.</li>
+    </ul>
+    <br>
+    <h4>GESTIÓN DE PROPIEDADES</h4>
+    <br>
+    <ul>
+        <li><strong>GET /api/propiedades/arrendador/{id}: </strong>HUA.4. Ver las propiedades asociadas a un arrendador específico.</li>
+        <li><strong>POST /api/propiedades: </strong>HUA.5. Crear una nueva propiedad.</li>
+        <li><strong>PUT /api/propiedades/{id}: </strong>HUA.6. Editar la información de una propiedad existente.</li>
+        <li><strong>POST /api/propiedades/{id}/fotos: </strong>HUA.7. Subir fotos para una propiedad.</li>
+        <li><strong>PUT /api/propiedades/desactivar/{id}: </strong>HUA.8. Desactivar una propiedad para que no esté disponible.</li>
+    </ul>
+    <br>
+    <h4>GESTIÓN DE SOLICITUDES Y CALIFICACIONES</h4>
+    <br>
+    <ul>
+        <li><strong>GET /api/solicitudes/arriendo/arrendador/{id}: </strong>HUA.9. Ver las solicitudes de arriendo recibidas.</li>
+        <li><strong>PUT /api/solicitudes/arriendo/aceptar/{id}: </strong><p>HUA.10. Aceptar una solicitud de arriendo específica.</li>
+        <li><strong>PUT /api/solicitudes/arriendo/cancelar/{id}: </strong>HUA.11. Cancelar una solicitud de arriendo específica.</li>
+        <li><strong>POST /api/calificaciones/arrendatario: </strong>HUA.12. Calificar a un arrendatario.</li>
+    </ul>
+    <br>
+    <h2>Historias de Usuario (Administrador)</h2>
+    <br> 
+        <h4>GESTIÓN DE CUENATS</h4>
+        <br>
+        <ul>
+            <li><strong>POST /api/administrador/cuentas: </strong>HUA.13. Creación de cuenta de administrador.</li>
+            <li><strong>PUT /api/administrador/activar/{token}: </strong>HUA.14. Activación de cuenta de administrador.</li>
+            <li><strong>POST /api/administrador/login: </strong>HUA.15. Autenticación de usuario administrador.</li>
+        </ul>
+        <br>
+        <h4>GESTIÓN DE PROPIEDADES Y ARRIENDOS</h4>
+        <br>
+        <ul>
+            <li><strong>GET /api/propiedades/buscar: </strong>HUA.16. Buscar propiedades basándose en ciertos criterios.</li>
+            <li><strong>POST /api/arriendos/solicitar: </strong>HUA.17. Solicitar un arriendo para una propiedad.</li>
+            <li><strong>GET /api/arriendos/solicitudes/{id}: </strong>HUA.18. Ver todas las solicitudes de arriendo hechas por un usuario.</li>
+            <li><strong>POST /api/arriendos/pagar/{id}: </strong>HUA.19. Realizar el pago de un arriendo.</li>
+        </ul>
+        <br>
+        <h4>GESTIÓN DE CALIFICACIONES</h4>
+        <br>
+        <ul>    
+        <li><strong>POST /api/calificaciones/finca: </strong>HUA.20. Calificar una finca.</li>
+        <li><strong>POST /api/calificaciones/arrendatario</strong>HUA.21. Calificar a un arrendatario.</li>
+        </ul>
+</section>
 
     <section id="fron-back"class="dev-section">
       <h2>Frontend y Backend</h2>
