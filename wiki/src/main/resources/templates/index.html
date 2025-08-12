@@ -54,23 +54,23 @@
         <p>A medida que el proyecto evolucione, esta wiki también lo hará, asimismo, este espacio está diseñado para fortalecer el trabajo en equipo y fomentar la transparencia durante todo el ciclo de vida del proyecto.</p>
       </section>
 
+      <img th:src="@{/images/ArriendaTuFinca.png}" alt="Imagen de arrienda tu finca" class="adicion-img"/>
 
       <section class="historial-versiones">
-    <h1>Historial de Cambios</h1>
-    <div class="historial-lista">
-        <div class="historial-item" th:each="commit : ${commits}">
-            <h3><span th:text="${commit.message}">Mensaje del Commit</span></h3>
-            <p>
-                <strong>Autor:</strong> <span th:text="${commit.author}">Autor del Commit</span><br>
-                <strong>Fecha:</strong> <span th:text="${commit.date}">Fecha del Commit</span>
-            </p>
+        <h1>Historial de Cambios</h1>
+        <div class="historial-lista">
+            <div class="historial-item" th:each="commit : ${commits}">
+                <h3><span th:text="${commit.message}">Mensaje del Commit</span></h3>
+                <p>
+                    <strong>Autor:</strong> <span th:text="${commit.author}">Autor del Commit</span><br>
+                    <strong>Fecha:</strong> <span th:text="${commit.date}">Fecha del Commit</span>
+                </p>
+            </div>
+            <p th:if="${#lists.isEmpty(commits)}">No se encontró historial de versiones.</p>
         </div>
-        <p th:if="${#lists.isEmpty(commits)}">No se encontró historial de versiones.</p>
-    </div>
-</section>
+      </section>
 
-
-      <img th:src="@{/images/ArriendaTuFinca.png}" alt="Imagen de arrienda tu finca" class="adicion-img"/>
+      <img th:src="@{/images/Cambios.png}" alt="Imagen de cambios equipo" class="adicion-img"/>
 
     </main>
   </body>

@@ -40,6 +40,7 @@
     <a th:href="@{/documentacion} + '#diag-contexto'">&nbsp;&nbsp;• Contexto</a>
     <a th:href="@{/documentacion} + '#diag-contenedor'">&nbsp;&nbsp;• Contenedor</a>
     <a th:href="@{/documentacion} + '#diag-componentes'">&nbsp;&nbsp;• Componentes</a>
+    <a th:href="@{/documentacion} + '#diag-codigo'">&nbsp;&nbsp;• Código</a>
     <a th:href="@{/documentacion} + '#diag-clases'">Diagrama de clases</a>
     <a th:href="@{/documentacion} + '#diag-despliegue'">Diagrama de despliegue</a>
     <a th:href="@{/documentacion} + '#bd'">Base de datos</a>
@@ -55,23 +56,33 @@
       <h3><strong>Descripción general</strong></h3>
       <br>
       <p>
-        <strong>Arrienda tu Finca</strong> es una plataforma web diseñada para facilitar el proceso de arriendo de fincas rurales entre particulares, conectando a propietarios (usuarios arrendatarios) que desean ofrecer sus propiedades en alquiler con personas interesadas en arrendarlas temporalmente (usuarios arrendadores).
+        <strong>Arrienda tu Finca</strong> es una plataforma web diseñada para facilitar el proceso de arriendo de fincas 
+        rurales entre particulares, conectando a propietarios (usuarios arrendatarios) que desean ofrecer sus propiedades 
+        en alquiler con personas interesadas en arrendarlas temporalmente (usuarios arrendadores).
       </p>
+      <br>
       <p>
-        La página web ofrece un entorno seguro, intuitivo y eficiente para la gestión de propiedades, solicitudes de arriendo, pagos, calificaciones y comunicación entre usuarios. Se enfoca en fomentar el turismo rural y el aprovechamiento de espacios campestres que, de otro modo, podrían estar subutilizados.
+        La página web ofrece un entorno seguro, intuitivo y eficiente para la gestión de propiedades, solicitudes de arriendo,
+         pagos, calificaciones y comunicación entre usuarios. Se enfoca en fomentar el turismo rural y el aprovechamiento de 
+         espacios campestres que, de otro modo, podrían estar subutilizados.
       </p>
       <p>El sistema contempla dos perfiles principales de usuario:</p>
       <ul>
+        <br>
         <li>
-          <strong>Usuario Arrendatario:</strong> Puede registrar, editar, eliminar y administrar fincas disponibles para arriendo, revisar solicitudes entrantes, aceptar o rechazar solicitudes, verificar pagos realizados y calificar a los arrendadores tras la experiencia.
+          <strong>Usuario Arrendatario:</strong> Puede registrar, editar, eliminar y administrar fincas disponibles para arriendo, 
+          revisar solicitudes entrantes, aceptar o rechazar solicitudes, verificar pagos realizados y calificar a los arrendadores 
+          tras la experiencia.
         </li>
         <li>
-          <strong>Usuario Arrendador:</strong> Puede buscar fincas por ubicación geográfica, visualizar detalles, enviar solicitudes de arriendo, realizar pagos tras aprobación y calificar tanto al arrendatario como a la finca.
+          <strong>Usuario Arrendador:</strong> Puede buscar fincas por ubicación geográfica, visualizar detalles, enviar solicitudes 
+          de arriendo, realizar pagos tras aprobación y calificar tanto al arrendatario como a la finca.
         </li>
       </ul>
       <img th:src="@{/images/Arrendador-arrendatario.png}" alt="Imagen de arrendador y arrendatario" class="adicion-img"/>
       <p>
-        La plataforma cuenta con un sistema de autenticación y autorización que permite gestionar los diferentes roles y permisos, y presenta interfaces web amigables para garantizar una experiencia clara e intuitiva desde cualquier navegador.
+        La plataforma cuenta con un sistema de autenticación y autorización que permite gestionar los diferentes roles y permisos, 
+        y presenta interfaces web amigables para garantizar una experiencia clara e intuitiva desde cualquier navegador.
       </p>
     </section>
 
@@ -152,14 +163,16 @@
 
     <section id="diag-arquitectura" class="dev-section er">
         <h3><strong>Diagrama de arquitectura</strong></h3>
+        <br>
         <p>El diagrama de arquitectura del sistema ArriendaTuFinca describe la organización de sus componentes y la interacción entre las distintas capas. </p>
+        <br>
          <li><strong>Capa Cliente:</strong> Usuarios arrendadores y arrendatarios interactúan con la aplicación a través de una interfaz web desarrollada en Angular.</li>
         <li><strong>Capa de Entrada:</strong> Gestiona las solicitudes HTTP(S) mediante Ingress y control de CORS, garantizando la seguridad y el manejo adecuado de peticiones REST/JSON.</li>
         <li><strong>Capa de Seguridad:</strong> Implementada con Spring Security y autenticación JWT, se encarga de proteger los accesos a los servicios internos del sistema.</li>
         <li><strong>Capa de Aplicación:</strong> Desarrollada con Spring Boot y JPA, contiene los servicios de Autenticación, Propiedades, Reservas y Pagos, encargados de la lógica de negocio.</li>
         <li><strong>Capa de Datos:</strong> Administra la persistencia de información en la base de datos, almacenando propiedades, usuarios, reservas y pagos.</li>
         <li><strong>Integración con módulo de pagos:</strong> El servicio de pagos interactúa con el sistema externo para procesar transacciones y devolver los resultados al sistema.</li>
-
+        <br>
         <img th:src="@{/images/Diagramas/DiagramaArquitectura.jpg}" alt="Diagrama de Arquitectura" />
       </section>
 
@@ -169,25 +182,95 @@
 
       <section id="diag-contexto" class="dev-section er">
         <h4><strong>Diagrama de Contexto</strong></h4>
+        <br>
         <p>Este diagrama representa cómo los usuarios arrendadores y arrendatarios se comunican con la plataforma para 
-          publicar, buscar y reservar propiedades, así como gestionar disponibilidad, precios y calificaciones. 
-          También se visualiza la relación con el módulo de pagos para procesar transacciones y con la base de datos, 
+          publicar, buscar y reservar propiedades, así como gestionar disponibilidad, precios y calificaciones.</p>
+        <br>
+        <p>También se visualiza la relación con el módulo de pagos para procesar transacciones y con la base de datos, 
           donde se almacenan y consultan las propiedades, usuarios, reservas y pagos, garantizando el flujo de información 
           necesario para el funcionamiento del sistema.</p>
+        <br>
         <img th:src="@{/images/Diagramas/DiagramaContexto.jpg}" alt="Diagrama de Contexto" />
       </section>
 
-      <section id="diag-contenedor" class="dev-section">
+      <section id="diag-contenedor" class="dev-section er">
         <h4><strong>Diagrama de Contenedor</strong></h4>
-        <p>Aquí irá el diagrama de contenedor...</p>
+        <br>
+        <p>Este diagrama de contenedor muestra  la forma en que interactúan sus diferentes componentes y actores.</p>
+        <br>
+        <p>El sistema cuenta con dos tipos de usuarios: <strong>arrendador y administrador</strong>, quienes acceden 
+          desde un navegador web a través de conexiones seguras HTTP/S.</p>
+        <br>
+        <p>La <strong>interfaz</strong> está desarrollada con Thymeleaf Templates, lo que permite mostrar dinámicamente la información y procesar las interacciones del usuario.</p>
+        <br>
+        <p>Las <strong>solicitudes</strong> se envían a la aplicación Spring Boot, que concentra los controladores, servicios y mecanismos 
+          de seguridad. Esta aplicación se comunica con dos elementos principales:</p>
+          <br>
+        <li>Una <strong>base de datos relacional (MySQL)</strong>, mediante JPA, para almacenar y gestionar la información de manera persistente.</li>
+        <li>Un <strong>servidor SMTP</strong>, encargado del envío de correos electrónicos de activación, lo que garantiza la validación y 
+          activación de cuentas.</li>
+          <br>
+          <img th:src="@{/images/Diagramas/DiagramaContenedor.jpg}" alt="Diagrama Contenedor" />
       </section>
 
-      <section id="diag-componentes" class="dev-section">
+      <section id="diag-componentes" class="dev-section er">
         <h4><strong>Diagrama de Componentes</strong></h4>
-        <p>Aquí irá el diagrama de componentes...</p>
+        <br>
+        <p>Este diagrama esta desarrollado bajo un enfoque de capas que permite mantener una separación 
+          clara entre la presentación, la lógica de negocio y la persistencia de datos, lo que facilita su mantenimiento, 
+          escalabilidad y seguridad.</p>
+        <br>
+        <p>En la parte superior se encuentra la capa de presentación, implementada con <strong>Thymeleaf y templates HTML</strong>,
+          encargada de mostrar la información al usuario y recibir sus interacciones. Esta capa se conecta con los controladores 
+          web, los cuales procesan las solicitudes y sirven como puente hacia la capa de lógica de negocio.</p>
+        <br>
+         <p>La capa de lógica de negocio es el <strong>núcleo del sistema</strong>. Aquí se ubican los servicios que gestionan las funcionalidades 
+          clave: la administración de usuarios, la autenticación y seguridad con Spring Security, y la gestión de propiedades. 
+          Esta capa se comunica tanto con el módulo de persistencia de datos como con las integraciones externas.</p>
+        <br>
+         <p>La <strong>persistencia de datos</strong> se implementa con Spring Data JPA, lo que permite gestionar la información de manera 
+          eficiente a través de repositorios que trabajan con entidades (Entities) y DTOs para transportar datos de forma optimizada. 
+          La información se almacena en una base de datos relacional, que en nuestro proyecto va a ser MySQL.</p>
+        <br>
+         <p>Por último, el sistema cuenta con integraciones externas, como el servicio de correo electrónico (SMTP) y otras 
+          API que amplían las funcionalidades de la aplicación.</p>
+        <br>
+        <img th:src="@{/images/Diagramas/DiagramaDeComponentes.jpg}" alt="Diagrama de Componentes" />
       </section>
 
-      <section id="diag-clases" class="dev-section">
+      <section id="diag-codigo" class="dev-section er">
+        <h4><strong>Diagrama de Código</strong></h4>
+        <br>
+        <p>Este diagrama muestra la estructura de código de la aplicación, organizada siguiendo el patrón MVC (Modelo-Vista-Controlador) 
+        y evidenciando la relación entre controladores, servicios, repositorios y entidades. En la capa de controladores se encuentran 
+        CuentaController, ArrendoController, FincaController y CalificacionController, encargados de recibir las solicitudes de los usuarios y 
+        delegarlas a sus respectivos servicios: CuentaService, ArrendoService, FincaService y CalificacionService.
+        </p>
+        <br>
+        <p>Cada servicio se comunica con su correspondiente repositorio —UsuarioRepository, ArrendoRepository, FincaRepository y 
+          CalificacionRepository—, que son responsables de interactuar con la base de datos.</p>
+        <br>
+         <p>Las entidades principales del sistema son:</p>
+        <br>
+         <ul>
+          <li><strong>Usuario:</strong> con atributos como id, nombre, email y password.</li>
+          <li><strong>Arriendo:</strong>  con información como id, fechaInicio, fechaFin y precio.</li>
+          <li><strong>Finca:</strong> con id, dirección y precio.</li>
+          <li><strong>Calificación:</strong> con id, puntaje y comentario.</li>
+        </ul>
+        <br>
+        <p>Las relaciones entre entidades muestran que:</p>
+        <br>
+         <ul>
+          <li>Un usuario puede tener múltiples arriendos y múltiples fincas.</li>
+          <li>Una finca puede tener varios arriendos y varias calificaciones.</li>
+          <li>Cada arriendo está asociado a un usuario y a una finca.</li>
+        </ul>
+        <br>
+        <img th:src="@{/images/Diagramas/DiagramaDeCodigo.jpg}" alt="Diagrama de Codigo" />
+      </section>
+
+      <section id="diag-clases" class="dev-section er">
         <h3><strong>Diagrama de Clases</strong></h3>
         <br>
         <p>
@@ -212,6 +295,7 @@
 
       <section id="diag-despliegue" class="dev-section">
     <h3><strong>Diagrama de despliegue</strong></h3>
+    <br
     <p>
         El diagrama de despliegue muestra la infraestructura física o virtual donde se ejecutará la aplicación. En este caso, la aplicación se ejecuta en una máquina virtual que contiene un servidor Apache, Kubernetes (K8s) para orquestación de contenedores, la aplicación web de Spring Boot y la base de datos JPA.
     </p>
@@ -226,18 +310,21 @@
 
       <section id="bd-mer" class="dev-section er">
         <h4><strong>Modelo Entidad-Relación (ER)</strong></h4>
+        <br>
         <p>El siguiente diagrama Entidad-Relación (ER) representa la estructura de la base de datos propuesta para el sistema, 
           mostrando las entidades principales, sus atributos y las relaciones entre ellas. Este modelo permite visualizar 
           cómo se organiza y conecta la información, sirviendo como base para el diseño e implementación del sistema. En el diagrama, 
-          PK (Primary Key) es una llave primaria, identificador único de cada registro en la tabla. No se repite y no puede ser nulo y
-          FK (Foreign Key) es una llave foránea, campo que establece una relación con la clave primaria de otra tabla para mantener 
+          <strong>PK </strong>(Primary Key) es una <strong>llave primaria</strong>, identificador único de cada registro en la tabla. No se repite y no puede ser nulo y
+          <strong>FK </strong>(Foreign Key) es una <strong>llave foránea</strong>, campo que establece una relación con la clave primaria de otra tabla para mantener 
           la integridad referencial.</p>
+          <br>
         <img th:src="@{/images/Diagramas/EntidadRelacion.jpg}" alt="Diagrama de Entidad-Relación" />
       </section>
       
 
       <section id="bd-diccionario" class="dev-section">
         <h4><strong>Diccionario de datos</strong></h4>
+        <br>
         <p><strong>Entidad: ROL</strong></p>
           <ul>
             <li><strong>PK:</strong> nombre : STRING</li>

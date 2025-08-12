@@ -209,6 +209,7 @@ h3 {
 
 .dev-section-small p {
   margin: 0;
+  color: #333;
 }
 
 
@@ -264,6 +265,7 @@ pre {
 .miembro p {
   margin-bottom: 8px;
   line-height: 1.5;
+  color: #333;
 }
 .foto-perfil {
   width: 120px;
@@ -632,5 +634,21 @@ height: auto;
 .commit-info p {
   margin: 0;
   font-size: 0.9rem;
-  color: #333;
+  color: #333 !important; /* Asegura que el color sea consistente */
 }
+
+/* Nuevo bloque, igual que .dev-section pero alineado a la izquierda */
+.dev-section-left {
+  background-color: #e8f4fd;   /* azul claro */
+  border-left: 6px solid #2b84e0;
+  padding: 20px;
+  margin: 20px 0;              /* sin margen izquierdo extra */
+  width: 65vw;                 /* mismo tamaño que la dev normal */
+  max-width: 1200px;
+  flex-grow: 1;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.05);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+
