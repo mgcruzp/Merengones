@@ -1,4 +1,4 @@
-package main.java.com.web.proyecto.repositories;
+package com.web.proyecto.repositories;
 
 public class ActivityRepository {
 

@@ -1,4 +1,4 @@
-package main.java.com.web.proyecto.dtos;
+package com.web.proyecto.dtos;
 
 public class ProcessDTO {
 
