@@ -19,13 +19,13 @@ public class Process {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 140)
+    @Column(nullable = false, length = 45)
     private String name;
 
-    @Column(length = 500)
+    @Column(length = 45)
     private String description;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 45, nullable = false)
     private String status;
 
     @OneToMany(mappedBy = "process", cascade = CascadeType.ALL, orphanRemoval = true)
