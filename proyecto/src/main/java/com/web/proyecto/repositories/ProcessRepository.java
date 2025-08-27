@@ -1,5 +1,6 @@
-package com.web.proyecto.repositories;    
+package com.web.proyecto.repositories;
 
-public class ProcessRepository {
+import com.web.proyecto.entities.Process;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-}
+public interface ProcessRepository extends JpaRepository<Process, Long> { }
