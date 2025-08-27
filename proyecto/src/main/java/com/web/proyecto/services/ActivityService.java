@@ -1,70 +1,52 @@
 package com.web.proyecto.services;
 
 import com.web.proyecto.entities.Activity;
+import com.web.proyecto.entities.Process;
 import com.web.proyecto.repositories.ActivityRepository;
+import com.web.proyecto.repositories.ProcessRepository;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
-import java.util.Optional;
 
-//•	Crear ActivityService con: 
-// create(processId,name), get(id), listByProcess(processId), rename(id,newName), delete(id).
-// Activity: existe processId. 
-
+@Service
+@Transactional
 public class ActivityService {
 
     private final ActivityRepository activityRepository;
+    private final ProcessRepository processRepository;
 
-    public ActivityService(ActivityRepository activityRepository) {
+    public ActivityService(ActivityRepository activityRepository, ProcessRepository processRepository) {
         this.activityRepository = activityRepository;
+        this.processRepository = processRepository;
     }
 
     public Activity create(Long processId, String name) {
-        if (name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException("El nombre de no puede estar vacio.");
-        }
-        Activity activity = new Activity(processId, name);
-        return activityRepository.save(activity);
+    Process process = processRepository.findById(processId)
+            .orElseThrow(() -> new IllegalArgumentException("Process not found: " + processId));
+    Activity a = new Activity();
+    a.setName(name);
+    a.setProcess(process);
+    return activityRepository.save(a);
+}
+
+    @Transactional(readOnly = true)
+    public Activity get(Long id) {
+        return activityRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Activity not found: " + id));
     }
 
-    public Optional<Activity> get(Long id) {
-        Optional<Activity> activity = activityRepository.findById(id);
-        if (activity.isEmpty()) {
-            throw new IllegalArgumentException("El ID " + id + " no fue encontrado.)");
-        }
-        return activityRepository.findById(id);
-    }
-
+    @Transactional(readOnly = true)
     public List<Activity> listByProcess(Long processId) {
-        if (processId == null || processId <= 0) {
-            throw new IllegalArgumentException("ID del proceso es invalido");
-        }
-        List<Activity> activities = activityRepository.findByProcessId(processId);
-        if (activities.isEmpty()) {
-            throw new IllegalStateException("No se encontró la actividad " + processId);
-        }
-        return aactivities;
+        return activityRepository.findByProcess_Id(processId);
     }
 
-    public Optional<Activity> rename(Long id, String newName) {
-        if (newName == null || newName.trim().isEmpty()) {
-            throw new IllegalArgumentException("El nuevo nombre no puede estar vacio");
-        }
-        Optional<Activity> activity = activityRepository.findById(id);
-        if (activity.isEmpty()) {
-            throw new IllegalArgumentException("La actividad" + id + " no fue encontrada");
-        }
-        Optional<Activity> activity = activityRepository.findById(id);
-        activity.ifPresent(a -> {
-            a.setName(newName);
-            activityRepository.save(a);
-        });
-        return activity;
+    public Activity rename(Long id, String newName) {
+        Activity a = get(id);
+        a.setName(newName);
+        return activityRepository.save(a);
     }
 
     public void delete(Long id) {
-        Optional<Activity> activity = activityRepository.findById(id);
-        if (activity.isEmpty()) {
-            throw new IllegalArgumentException("La actividad " + id + " no fue encontrada");
-        }
         activityRepository.deleteById(id);
     }
 }
