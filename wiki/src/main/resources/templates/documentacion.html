@@ -51,115 +51,188 @@
 
 
  <main>
-    <h1>Documentación del Proyecto</h1>
-      <section id="descripcion" class="dev-section">
+  <h1>Documentación del Proyecto</h1>
+    <section id="descripcion" class="dev-section">
       <h3><strong>Descripción general</strong></h3>
       <br>
       <p>
-        <strong>Arrienda tu Finca</strong> es una plataforma web diseñada para facilitar el proceso de arriendo de fincas 
-        rurales entre particulares, conectando a propietarios (usuarios arrendatarios) que desean ofrecer sus propiedades 
-        en alquiler con personas interesadas en arrendarlas temporalmente (usuarios arrendadores).
+        El <strong>Sistema de Gestión de Procesos</strong> es una plataforma web diseñada para que las empresas puedan
+        documentar, administrar y mantener actualizados sus flujos de trabajo internos. 
+        Conecta a los distintos colaboradores de una organización en un entorno unificado 
+        donde se pueden gestionar procesos, actividades, roles y decisiones de manera estructurada.
       </p>
       <br>
       <p>
-        La página web ofrece un entorno seguro, intuitivo y eficiente para la gestión de propiedades, solicitudes de arriendo,
-         pagos, calificaciones y comunicación entre usuarios. Se enfoca en fomentar el turismo rural y el aprovechamiento de 
-         espacios campestres que, de otro modo, podrían estar subutilizados.
+        La aplicación ofrece un entorno seguro, colaborativo e intuitivo para la creación de procesos empresariales,
+        facilitando la asignación de roles, la trazabilidad de cambios y la visualización gráfica de los flujos. 
+        El sistema contempla dos niveles de usuario principales:
       </p>
-      <p>El sistema contempla dos perfiles principales de usuario:</p>
       <ul>
         <br>
         <li>
-          <strong>Usuario Arrendatario:</strong> Puede registrar, editar, eliminar y administrar fincas disponibles para arriendo, 
-          revisar solicitudes entrantes, aceptar o rechazar solicitudes, verificar pagos realizados y calificar a los arrendadores 
-          tras la experiencia.
+          <strong>Administrador de empresa:</strong> Puede registrar la empresa en el sistema, gestionar usuarios,
+          crear y administrar procesos, definir roles, eliminar elementos y garantizar la consistencia de la información.
         </li>
         <li>
-          <strong>Usuario Arrendador:</strong> Puede buscar fincas por ubicación geográfica, visualizar detalles, enviar solicitudes 
-          de arriendo, realizar pagos tras aprobación y calificar tanto al arrendatario como a la finca.
+          <strong>Usuario autorizado:</strong> Puede crear, editar y consultar procesos, actividades, arcos y gateways,
+          así como aportar a la documentación según los permisos asignados.
         </li>
       </ul>
-      <img th:src="@{/images/Arrendador-arrendatario.png}" alt="Imagen de arrendador y arrendatario" class="adicion-img"/>
+      <img th:src="@{/images/DescripcionProyecto.png}" alt="Imagen de gestión de procesos" class="adicion-img"/>
       <p>
-        La plataforma cuenta con un sistema de autenticación y autorización que permite gestionar los diferentes roles y permisos, 
-        y presenta interfaces web amigables para garantizar una experiencia clara e intuitiva desde cualquier navegador.
+        El sistema cuenta con autenticación y autorización para controlar accesos, registro de historial de cambios 
+        y funcionalidades de búsqueda y filtrado. De esta manera, las organizaciones pueden asegurar que sus procesos 
+        estén correctamente documentados, actualizados y disponibles para todos sus colaboradores.
       </p>
+      <br>
+      <p><strong>Definiciones clave</strong></p>
+      <ul>
+        <li><strong>Proceso:</strong> Conjunto estructurado de actividades que representan un flujo de trabajo dentro de la empresa. Puede estar en estado borrador o publicado.</li>
+        <li><strong>Actividad:</strong> Tarea individual dentro de un proceso. Tiene nombre, tipo, descripción y un rol responsable asociado.</li>
+        <li><strong>Arco:</strong> Conexión que enlaza actividades y/o gateways, definiendo el orden y la secuencia en que se ejecuta el proceso.</li>
+        <li><strong>Gateway:</strong> Punto de decisión dentro del proceso, que puede ser exclusivo, paralelo o inclusivo, y define cómo se ramifica el flujo.</li>
+        <li><strong>Rol de proceso:</strong> Función definida dentro de la empresa (ej. Analista, Supervisor, Auditor) a la que se asignan actividades, en lugar de asociarlas a personas específicas.</li>
+      </ul>
     </section>
+
 
     <section id="req-func" class="dev-section">
       <h3><strong>Requerimientos Funcionales</strong></h3>
       <br>
+      
       <p><strong>RF1. Autenticación y gestión de usuarios:</strong></p>
       <ul>
-        <li><strong>RF1.1: </strong>El sistema debe permitir el registro de usuarios arrendadores y arrendatarios.</li>
-        <li><strong>RF1.2: </strong>El sistema debe permitir que los usuarios inicien sesión con credenciales válidas.</li>
-        <li><strong>RF1.3: </strong>El sistema debe permitir que los usuarios cierren sesión de manera segura.</li>
+        <li><strong>RF1.1:</strong> El sistema debe permitir registrar una empresa solicitando nombre, NIT y correo de contacto, generando un administrador inicial.</li>
+        <li><strong>RF1.2:</strong> El sistema debe permitir a los usuarios iniciar sesión con credenciales válidas, restringiendo el acceso a la empresa correspondiente.</li>
+        <li><strong>RF1.3:</strong> El sistema debe permitir a los usuarios cerrar sesión de manera segura.</li>
       </ul>
+
       <br>
-      <p><strong>RF2. Funcionalidades del Usuario Arrendador:</strong></p>
+      <p><strong>RF2. Gestión de procesos:</strong></p>
       <ul>
-        <li><strong>RF2.1: </strong>El sistema debe permitir que el usuario arrendador registre nuevas fincas disponibles para arriendo.</li>
-        <li><strong>RF2.2: </strong>El sistema debe permitir que el usuario arrendador edite la información de las fincas publicadas.</li>
-        <li><strong>RF2.3: </strong>El sistema debe permitir que el usuario arrendador elimine fincas publicadas.</li>
-        <li><strong>RF2.4: </strong>El sistema debe permitir que el usuario arrendador visualice la lista completa de sus fincas publicadas.</li>
-        <li><strong>RF2.5: </strong>El sistema debe notificar al usuario arrendador si su finca ha sido arrendada.</li>
-        <li><strong>RF2.6: </strong>El sistema debe permitir que el usuario arrendador acepte o rechace solicitudes de arriendo.</li>
-        <li><strong>RF2.7: </strong>El sistema debe permitir que el usuario arrendador consulte el historial de solicitudes recibidas.</li>
-        <li><strong>RF2.8: </strong>El sistema debe permitir que el usuario arrendador verifique si el usuario arrendatario ha realizado el pago.</li>
-        <li><strong>RF2.9: </strong>El sistema debe permitir que el usuario arrendador califique al usuario arrendatario después del arriendo.</li>
-        <li><strong>RF2.10: </strong>El sistema debe permitir que el usuario arrendador suba fotos de su finca.</li>
-        <li><strong>RF2.11: </strong>El sistema debe permitir que el usuario arrendador desactive su finca.</li>
+        <li><strong>RF2.1:</strong> El sistema debe permitir que un usuario autorizado cree procesos registrando nombre, descripción y categoría.</li>
+        <li><strong>RF2.2:</strong> El sistema debe permitir que un usuario autorizado edite procesos, guardando un historial de cambios.</li>
+        <li><strong>RF2.3:</strong> El sistema debe permitir que un administrador elimine procesos, manteniéndolos en estado inactivo para conservar trazabilidad.</li>
+        <li><strong>RF2.4:</strong> El sistema debe permitir a los usuarios consultar procesos existentes mediante búsqueda y filtros.</li>
       </ul>
+
       <br>
-      <p><strong>RF3. Funcionalidades del Usuario Arrendatario:</strong></p>
+      <p><strong>RF3. Gestión de actividades:</strong></p>
       <ul>
-        <li><strong>RF3.1: </strong>El sistema debe permitir que el usuario arrendatario busque fincas disponibles utilizando filtros por nombre, municipio, cantidad de personas.</li>
-        <li><strong>RF3.2: </strong>El sistema debe permitir que el usuario arrendatario visualice los detalles de una finca publicada.</li>
-        <li><strong>RF3.3: </strong>El sistema debe permitir que el usuario arrendatario solicite el arriendo de una finca.</li>
-        <li><strong>RF3.4: </strong>El sistema debe notificar al usuario arrendatario si su solicitud ha sido aceptada o rechazada.</li>
-        <li><strong>RF3.5: </strong>El sistema debe permitir que el usuario arrendatario realice el pago del arriendo de manera segura.</li>
-        <li><strong>RF3.6: </strong>El sistema debe permitir que el usuario arrendatario visualice el historial de fincas que ha arrendado.</li>
-        <li><strong>RF3.7: </strong>El sistema debe permitir que el usuario arrendatario califique la finca arrendada y al usuario arrendador.</li>
+        <li><strong>RF3.1:</strong> El sistema debe permitir que un usuario autorizado cree actividades definiendo nombre, tipo, descripción y rol responsable.</li>
+        <li><strong>RF3.2:</strong> El sistema debe permitir que un usuario autorizado edite actividades, registrando las modificaciones en el historial del proceso.</li>
+        <li><strong>RF3.3:</strong> El sistema debe permitir que un administrador elimine actividades, ajustando automáticamente el flujo del proceso.</li>
       </ul>
+
       <br>
+      <p><strong>RF4. Gestión de arcos:</strong></p>
+      <ul>
+        <li><strong>RF4.1:</strong> El sistema debe permitir que un usuario autorizado cree arcos definiendo origen y destino entre actividades o gateways.</li>
+        <li><strong>RF4.2:</strong> El sistema debe permitir que un usuario autorizado edite arcos existentes.</li>
+        <li><strong>RF4.3:</strong> El sistema debe permitir que un administrador elimine arcos, ajustando automáticamente el diagrama.</li>
+      </ul>
+
+      <br>
+      <p><strong>RF5. Gestión de gateways:</strong></p>
+      <ul>
+        <li><strong>RF5.1:</strong> El sistema debe permitir que un usuario autorizado cree gateways de tipo exclusivo, paralelo o inclusivo.</li>
+        <li><strong>RF5.2:</strong> El sistema debe permitir que un usuario autorizado edite gateways, actualizando condiciones de salida.</li>
+        <li><strong>RF5.3:</strong> El sistema debe permitir que un administrador elimine gateways, asegurando la consistencia del flujo.</li>
+      </ul>
+
+      <br>
+      <p><strong>RF6. Gestión de roles de proceso:</strong></p>
+      <ul>
+        <li><strong>RF6.1:</strong> El sistema debe permitir que un usuario autorizado cree roles de proceso (ejemplo: Analista, Supervisor, Auditor).</li>
+        <li><strong>RF6.2:</strong> El sistema debe permitir que un usuario autorizado edite roles de proceso sin afectar el historial de los procesos.</li>
+        <li><strong>RF6.3:</strong> El sistema debe permitir que un administrador elimine roles de proceso, validando que no estén asignados a actividades.</li>
+        <li><strong>RF6.4:</strong> El sistema debe permitir que cualquier usuario consulte los roles de proceso disponibles y en qué procesos se utilizan.</li>
+      </ul>
+
+      <br>
+      <p><strong>RF7. Asignación de roles de cuenta:</strong></p>
+      <ul>
+        <li><strong>RF7.1:</strong> El sistema debe permitir la creación y asignación de roles a los procesos de la empresa.</li>
+      </ul>
     </section>
 
     <section id="req-nofunc" class="dev-section">
-      <h3><strong>Requerimientos No Funcionales</strong></h3>
+    <h3><strong>Requerimientos No Funcionales</strong></h3>
       <br>
-      <p><strong>RNF1. Usabilidad:</strong></p>
+
+      <p><strong>RNF1. Seguridad y privacidad:</strong></p>
       <ul>
-        <li><strong>RNF1.1: </strong>El sistema debe ofrecer una interfaz gráfica intuitiva y fácil de usar para todos los usuarios.</li>
+        <li><strong>RNF1.1:</strong> El sistema debe contar con autenticación mediante correo y contraseña.</li>
+        <li><strong>RNF1.2:</strong> El sistema debe implementar autorización por rol y empresa, de manera que los usuarios solo accedan a la información de su organización.</li>
+        <li><strong>RNF1.3:</strong> El sistema debe permitir configurar políticas de contraseñas con requisitos mínimos de longitud y complejidad.</li>
       </ul>
+
       <br>
-      <p><strong>RNF2. Rendimiento:</strong></p>
+      <p><strong>RNF2. Disponibilidad y confiabilidad:</strong></p>
       <ul>
-        <li><strong>RNF2.1: </strong>El sistema debe cargar cualquier vista en un tiempo máximo de 3 segundos en condiciones de red promedio.</li>
-        <li><strong>RNF2.2: </strong>El sistema debe soportar al menos 10 usuarios concurrentes sin degradar su rendimiento.</li>
+        <li><strong>RNF2.1:</strong> El sistema debe garantizar una disponibilidad mínima del servicio.</li>
       </ul>
+
       <br>
-      <p><strong>RNF3. Seguridad:</strong></p>
+      <p><strong>RNF3. Rendimiento:</strong></p>
       <ul>
-        <li><strong>RNF3.1: </strong>El sistema debe implementar control de acceso basado en roles (arrendador y arrendatario).</li>
-        <li><strong>RNF3.2: </strong>El sistema debe exigir contraseñas seguras al momento del registro (mínimo 8 caracteres, una mayúscula y un número).</li>
+        <li><strong>RNF3.1:</strong> El sistema debe responder en tiempos adecuados en operaciones de consulta.</li>
+        <li><strong>RNF3.2:</strong> El sistema debe garantizar un tiempo aceptable en operaciones de escritura (crear, editar, eliminar).</li>
+        <li><strong>RNF3.3:</strong> El sistema debe renderizar diagramas de procesos en un tiempo razonable incluso con un número elevado de elementos.</li>
+        <li><strong>RNF3.4:</strong> El sistema debe someterse a pruebas de rendimiento y carga utilizando <em>JMeter</em>, cumpliendo con tiempos de respuesta y estabilidad bajo escenarios de estrés.</li>
       </ul>
+
       <br>
-      <p><strong>RNF4. Mantenibilidad:</strong></p>
+      <p><strong>RNF4. Escalabilidad:</strong></p>
       <ul>
-        <li><strong>RNF4.1: </strong>El sistema debe estar diseñado bajo una arquitectura modular que facilite la adición o modificación de funcionalidades.</li>
-        <li><strong>RNF4.2: </strong>El sistema debe contar con documentación clara para facilitar el mantenimiento y soporte a través de una wiki.</li>
+        <li><strong>RNF4.1:</strong> El sistema debe ser escalable para soportar un crecimiento en el número de empresas y usuarios concurrentes.</li>
+        <li><strong>RNF4.2:</strong> El sistema debe mantener un desempeño adecuado aun con grandes volúmenes de procesos y actividades.</li>
       </ul>
+
       <br>
-      <p><strong>RNF5. Disponibilidad:</strong></p>
+      <p><strong>RNF5. Mantenibilidad:</strong></p>
       <ul>
-        <li><strong>RNF5.1: </strong>El sistema debe estar disponible al menos el 99% del tiempo, garantizando operación continua 24/7.</li>
+        <li><strong>RNF5.1:</strong> El sistema debe contar con pruebas unitarias y de integración para garantizar la calidad del código.</li>
+        <li><strong>RNF5.2:</strong> El sistema debe estar desarrollado siguiendo estándares de codificación que faciliten la lectura y mantenimiento.</li>
+        <li><strong>RNF5.3:</strong> El sistema debe cumplir con métricas de calidad de código evaluadas mediante <em>SonarQube</em>, alcanzando como mínimo un nivel aceptable en cobertura de pruebas, duplicación de código y complejidad.</li>
       </ul>
+
       <br>
-      <p><strong>RNF6. Escalabilidad:</strong></p>
+      <p><strong>RNF6. Usabilidad:</strong></p>
       <ul>
-        <li><strong>RNF6.1: </strong>El sistema debe permitir la localización y traducción de interfaces para su uso en múltiples países o regiones.</li>
+        <li><strong>RNF6.1:</strong> El sistema debe contar con una interfaz intuitiva y fácil de usar para usuarios no técnicos.</li>
       </ul>
+
+      <br>
+      <p><strong>RNF7. Integridad y consistencia de datos:</strong></p>
+      <ul>
+        <li><strong>RNF7.1:</strong> El sistema debe mantener la consistencia de los datos en operaciones de creación, edición y eliminación.</li>
+        <li><strong>RNF7.2:</strong> El sistema debe prevenir la eliminación de elementos que estén siendo utilizados en otros procesos (ejemplo: roles asignados a actividades).</li>
+        <li><strong>RNF7.3:</strong> El sistema debe conservar un historial inalterable de cambios realizados.</li>
+      </ul>
+
+      <br>
+      <p><strong>RNF8. Monitoreo y registro:</strong></p>
+      <ul>
+        <li><strong>RNF8.1:</strong> El sistema debe registrar métricas de uso y rendimiento.</li>
+        <li><strong>RNF8.2:</strong> El sistema debe generar alertas ante fallos o errores recurrentes.</li>
+      </ul>
+
+      <br>
+      <p><strong>RNF9. Cumplimiento legal:</strong></p>
+      <ul>
+        <li><strong>RNF9.1:</strong> El sistema debe cumplir con las normativas locales de protección de datos personales.</li>
+        <li><strong>RNF9.2:</strong> El sistema debe contar con políticas de privacidad y términos de uso aceptados por los usuarios.</li>
+      </ul>
+
+      <br>
+      <p><strong>RNF10. Portabilidad y compatibilidad:</strong></p>
+      <ul>
+        <li><strong>RNF10.1:</strong> El sistema debe ser compatible con los navegadores web más utilizados (ejemplo: Google Chrome, Mozilla Firefox, Microsoft Edge).</li>
+      </ul>
+
     </section>
+
 
     <section id="diag-arquitectura" class="dev-section er">
         <h3><strong>Diagrama de arquitectura</strong></h3>
