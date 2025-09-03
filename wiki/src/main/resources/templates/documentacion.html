@@ -343,27 +343,32 @@
         <img th:src="@{/images/Diagramas/DiagramaDeCodigo.jpg}" alt="Diagrama de Codigo" />
       </section>
 
+
       <section id="diag-clases" class="dev-section er">
         <h3><strong>Diagrama de Clases</strong></h3>
         <br>
         <p>
-          Este diagrama de clases representa la estructura y relaciones principales del sistema <strong>"Arrienda tu Finca"</strong>.
+          Este diagrama de clases representa la estructura principal del sistema
+          <strong>Sistema de Gestión de Procesos</strong>.
         </p>
         <br>
         <ul>
-          <li><strong>Usuario:</strong> Clase central que almacena la información personal (nombre, apellido, correo, teléfono, rol) y métodos para gestionar la cuenta (crear, editar, ver perfil, activar, autenticar). Se asocia con múltiples <em>Finca</em>, <em>Solicitud</em> y <em>Calificación</em>.</li>
-          <li><strong>Rol (ENUM):</strong> Define los tipos de usuario: <em>ARRENDADOR</em> y <em>ARRENDATARIO</em>.</li>
-          <li><strong>Finca:</strong> Contiene datos de una propiedad (título, descripción, ubicación, precio, disponibilidad) y métodos para su administración (publicar, editar, desactivar, marcar disponible, subir fotos, ver fincas). Relacionada con un propietario (<em>Usuario</em>) y con <em>Calificación</em>.</li>
-          <li><strong>Solicitud:</strong> Representa una petición de arriendo de una finca, con atributos como fecha, estado y mensaje, y métodos para gestionarla (aceptar, rechazar, ver solicitudes).</li>
-          <li><strong>Pago:</strong> Registra los pagos asociados a solicitudes, con detalles como monto, fecha y método de pago, y el método <em>realizarPago</em>.</li>
-          <li><strong>Calificación:</strong> Permite evaluar la experiencia con puntaje, comentario y fecha, vinculando al evaluador, evaluado y la finca correspondiente.</li>
+          <li><strong>Empresa:</strong> Agrupa usuarios y procesos dentro de una organización.</li>
+          <li><strong>Usuario:</strong> Persona que participa en la gestión y documentación de procesos.</li>
+          <li><strong>Proceso:</strong> Unidad que organiza y describe actividades, roles y flujo de trabajo.</li>
+          <li><strong>Rol:</strong> Define las funciones y permisos específicos de un proceso.</li>
+          <li><strong>ParticipacionProceso:</strong> Registra la asignación de un usuario a un rol dentro de un proceso.</li>
+          <li><strong>Actividad:</strong> Representa un paso o tarea dentro de un proceso.</li>
+          <li><strong>Gateway:</strong> Punto de decisión que permite ramificar el flujo del proceso.</li>
+          <li><strong>Arco (Flujo):</strong> Conexión que enlaza actividades y gateways para definir la secuencia.</li>
         </ul>
         <br>
         <p>
-          En conjunto, el diagrama muestra cómo las entidades del sistema se conectan para permitir la publicación de fincas, el envío y gestión de solicitudes, la realización de pagos y la calificación de experiencias.
+          En conjunto, el diagrama permite modelar empresas, usuarios y procesos, así como
+          describir actividades, decisiones y conexiones que conforman el flujo de trabajo.
         </p>
         <br>
-        <img th:src="@{/images/Diagramas/UML.png}" alt="Diagrama de clases" />
+        <img th:src="@{/images/Diagramas/DiagramaUML.png}" alt="Diagrama de clases" />
       </section>
 
       <section id="diag-despliegue" class="dev-section">
