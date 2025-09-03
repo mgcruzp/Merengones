@@ -1,14 +1,7 @@
-From openjdk:17
-# FROM tomcat:9.0
-
-# Copia el código fuente de la aplicación a 
-COPY . /app
-
-# Establece el directorio de trabajo
+FROM openjdk:17
 WORKDIR /app
-
-# Construye el archivo JAR de la aplicacion
+COPY . /app
+RUN chmod +x mvnw
 RUN ./mvnw clean install -DskipTests
-
-# Ejecuta la aplicacion Spring Boot cuando se inicia el contenedor
+EXPOSE 8080
 CMD ["java", "-jar", "target/proyecto-0.0.1-SNAPSHOT.jar"]
