@@ -2,6 +2,7 @@ package com.web.proyecto.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import java.util.List;
 
 @Entity
 @Table(name = "empresa", uniqueConstraints = {
@@ -22,4 +23,10 @@ public class Empresa {
 
     @Column(nullable = false, length = 120)
     private String correoContacto;
+
+    // Relación con usuarios
+    @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Usuario> usuarios;
 }
+
+
