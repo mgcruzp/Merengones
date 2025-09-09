@@ -1,5 +1,6 @@
 package com.web.proyecto.services;
 
+import com.web.proyecto.dtos.ProcessDTO;
 import com.web.proyecto.entities.Process;
 import com.web.proyecto.repositories.ProcessRepository;
 import org.springframework.stereotype.Service;
@@ -41,5 +42,20 @@ public class ProcessService {
 
     public void delete(Long id) {
         processRepository.deleteById(id);
+    }
+    
+    public Object update(Long id, ProcessDTO dto) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
+    }
+
+    public Object getById(Long id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getById'");
+    }
+
+    public ProcessDTO create(ProcessDTO dto) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'create'");
     }
 }
