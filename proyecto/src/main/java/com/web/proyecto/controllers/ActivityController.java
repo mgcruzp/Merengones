@@ -39,12 +39,38 @@ public class ActivityController {
         return ResponseEntity.ok(service.listByProcess(processId));
     }
 
+    /* ====== NUEVOS endpoints de filtrado ====== */
+
+    // por empresa (a través del process.empresa.id)
+    @GetMapping("/empresa/{empresaId}")
+    public ResponseEntity<List<ActivityDTO>> listByEmpresa(@PathVariable Long empresaId) {
+        return ResponseEntity.ok(service.listByEmpresa(empresaId));
+    }
+
+    // por status del proceso
+    @GetMapping("/process/status/{status}")
+    public ResponseEntity<List<ActivityDTO>> listByProcessStatus(@PathVariable String status) {
+        return ResponseEntity.ok(service.listByProcessStatus(status));
+    }
+
+    // por category del proceso
+    @GetMapping("/process/category/{category}")
+    public ResponseEntity<List<ActivityDTO>> listByProcessCategory(@PathVariable String category) {
+        return ResponseEntity.ok(service.listByProcessCategory(category));
+    }
+
+    // por empresa + status
+    @GetMapping("/empresa/{empresaId}/status/{status}")
+    public ResponseEntity<List<ActivityDTO>> listByEmpresaAndStatus(@PathVariable Long empresaId,
+                                                                    @PathVariable String status) {
+        return ResponseEntity.ok(service.listByEmpresaAndStatus(empresaId, status));
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<ActivityDTO> update(@PathVariable Long id, @Valid @RequestBody ActivityDTO dto) {
         return ResponseEntity.ok(service.update(id, dto));
     }
 
-    // Renombrar por conveniencia (opcional)
     @PatchMapping("/{id}/name")
     public ResponseEntity<ActivityDTO> rename(@PathVariable Long id, @RequestBody String newName) {
         return ResponseEntity.ok(service.rename(id, newName));
