@@ -4,16 +4,16 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
 @Builder
 public class ActivityDTO {
+
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "name es obligatorio")
     private String name;
 
-    @NotNull
+    @NotNull(message = "processId es obligatorio")
     private Long processId;
 }
