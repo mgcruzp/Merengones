@@ -1,25 +1,15 @@
 package com.web.proyecto.dtos;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
-import jakarta.validation.constraints.NotNull;
+import lombok.*;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class EdgeDTO {
-
-    @NotNull
     private Long id;
-
-    @NotNull
     private Long processId;
-
-    @NotNull
     private Long sourceId;
-
-    @NotNull
     private Long targetId;
+
+    private String description; // opcional (<=45)
+    private String status;      // opcional: "ACTIVE"/"INACTIVE" (si viene null, se pone ACTIVE en @PrePersist)
 }
 

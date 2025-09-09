@@ -1,15 +1,17 @@
 package com.web.proyecto.entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.*;
 
 @Entity
-@Table(name = "edge")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Table(
+    name = "edge",
+    uniqueConstraints = @UniqueConstraint(
+        name = "uk_edge_triplet",
+        columnNames = {"process_id", "source_activity_id", "target_activity_id"}
+    )
+)
+@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class Edge {
 
     @Id
@@ -19,10 +21,8 @@ public class Edge {
     @Column(length = 45)
     private String description;
 
-    /*Dos atributos que no alcanzo a ver */
-
     @Column(length = 45, nullable = false)
-    private String status;
+    private String status; // e.g., ACTIVE / INACTIVE
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "process_id", nullable = false)
@@ -35,4 +35,10 @@ public class Edge {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "target_activity_id", nullable = false)
     private Activity target;
+
+    @PrePersist
+    public void prePersist() {
+        if (status == null || status.isBlank()) status = "ACTIVE";
+    }
 }
+
