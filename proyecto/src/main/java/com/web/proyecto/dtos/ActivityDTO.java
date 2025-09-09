@@ -1,17 +1,14 @@
 package com.web.proyecto.dtos;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.*;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class ActivityDTO {
-
-    @NotNull
     private Long id;
 
     @NotBlank
@@ -20,4 +17,3 @@ public class ActivityDTO {
     @NotNull
     private Long processId;
 }
-
