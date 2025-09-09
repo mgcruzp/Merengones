@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ActivityRepository extends JpaRepository<Activity, Long> {
-    // Para listar actividades de un proceso específico
     List<Activity> findByProcess_Id(Long processId);
+    boolean existsByNameIgnoreCaseAndProcess_Id(String name, Long processId);
 }
