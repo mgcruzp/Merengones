@@ -19,8 +19,8 @@ public class ActivityService {
     private final ActivityRepository activityRepository;
     private final ProcessRepository processRepository;
 
-    /* ====== Mapeos ====== */
-    private ActivityDTO toDTO(Activity a) {
+    /* ---------- Mappers ---------- */
+    private ActivityDTO toDTO(Activity a){
         return ActivityDTO.builder()
                 .id(a.getId())
                 .name(a.getName())
@@ -28,20 +28,21 @@ public class ActivityService {
                 .build();
     }
 
-    private Activity fromDTOForCreate(ActivityDTO dto, Process p) {
+    private Activity fromDTOForCreate(ActivityDTO dto, Process p){
         return Activity.builder()
                 .name(dto.getName())
                 .process(p)
                 .build();
     }
 
-    /* ====== CRUD ====== */
-    public ActivityDTO create(ActivityDTO dto) {
-        Process p = processRepository.findById(dto.getProcessId())
-                .orElseThrow(() -> new IllegalArgumentException("Proceso no encontrado: " + dto.getProcessId()));
+    /* ---------- CRUD ---------- */
 
-        if (activityRepository.existsByNameIgnoreCaseAndProcess_Id(dto.getName(), dto.getProcessId())) {
-            throw new IllegalArgumentException("Ya existe una actividad con ese nombre en el proceso.");
+    public ActivityDTO create(ActivityDTO dto){
+        Process p = processRepository.findById(dto.getProcessId())
+                .orElseThrow(() -> new IllegalArgumentException("Process no existe: " + dto.getProcessId()));
+
+        if (activityRepository.existsByNameIgnoreCaseAndProcess_Id(dto.getName(), p.getId())){
+            throw new IllegalArgumentException("Ya existe una Activity con ese name en el proceso");
         }
 
         Activity saved = activityRepository.save(fromDTOForCreate(dto, p));
@@ -49,85 +50,74 @@ public class ActivityService {
     }
 
     @Transactional(readOnly = true)
-    public ActivityDTO getById(Long id) {
-        Activity a = activityRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Actividad no encontrada: " + id));
-        return toDTO(a);
-    }
-
-    @Transactional(readOnly = true)
-    public List<ActivityDTO> list() {
+    public List<ActivityDTO> listAll(){
         return activityRepository.findAll().stream().map(this::toDTO).toList();
     }
 
     @Transactional(readOnly = true)
-    public List<ActivityDTO> listByProcess(Long processId) {
-        return activityRepository.findByProcess_Id(processId).stream().map(this::toDTO).toList();
+    public ActivityDTO getById(Long id){
+        Activity a = activityRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Activity no existe: " + id));
+        return toDTO(a);
     }
 
-    public ActivityDTO update(Long id, ActivityDTO dto) {
+    public ActivityDTO update(Long id, ActivityDTO dto){
         Activity a = activityRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Actividad no encontrada: " + id));
+                .orElseThrow(() -> new IllegalArgumentException("Activity no existe: " + id));
 
-        Long targetProcessId = (dto.getProcessId() != null) ? dto.getProcessId() : a.getProcess().getId();
-        String targetName = (dto.getName() != null) ? dto.getName() : a.getName();
-
-        if (!a.getName().equalsIgnoreCase(targetName) || !a.getProcess().getId().equals(targetProcessId)) {
-            if (activityRepository.existsByNameIgnoreCaseAndProcess_Id(targetName, targetProcessId)) {
-                throw new IllegalArgumentException("Ya existe una actividad con ese nombre en el proceso.");
-            }
+        // Si cambia el nombre, validar duplicado dentro del mismo proceso:
+        if (dto.getName() != null &&
+                activityRepository.existsByNameIgnoreCaseAndProcess_Id(dto.getName(), a.getProcess().getId())){
+            throw new IllegalArgumentException("Nombre duplicado en el proceso");
         }
-
         if (dto.getName() != null) a.setName(dto.getName());
-        if (dto.getProcessId() != null) {
+
+        // Si cambia de proceso:
+        if (dto.getProcessId() != null && !dto.getProcessId().equals(a.getProcess().getId())){
             Process p = processRepository.findById(dto.getProcessId())
-                    .orElseThrow(() -> new IllegalArgumentException("Proceso no encontrado: " + dto.getProcessId()));
+                    .orElseThrow(() -> new IllegalArgumentException("Process no existe: " + dto.getProcessId()));
+            // Verificar duplicado en el nuevo proceso
+            if (activityRepository.existsByNameIgnoreCaseAndProcess_Id(a.getName(), p.getId())){
+                throw new IllegalArgumentException("Nombre duplicado en el nuevo proceso");
+            }
             a.setProcess(p);
         }
 
         return toDTO(activityRepository.save(a));
     }
 
-    public ActivityDTO rename(Long id, String newName) {
-        Activity a = activityRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Actividad no encontrada: " + id));
-        if (activityRepository.existsByNameIgnoreCaseAndProcess_Id(newName, a.getProcess().getId())) {
-            throw new IllegalArgumentException("Ya existe una actividad con ese nombre en el proceso.");
-        }
-        a.setName(newName);
-        return toDTO(activityRepository.save(a));
-    }
-
-    public void delete(Long id) {
-        if (!activityRepository.existsById(id)) {
-            throw new IllegalArgumentException("Actividad no encontrada: " + id);
+    public void delete(Long id){
+        if (!activityRepository.existsById(id)){
+            throw new IllegalArgumentException("Activity no existe: " + id);
         }
         activityRepository.deleteById(id);
     }
 
-    /* ====== NUEVOS LISTADOS alineados con ProcessRepository ====== */
+    /* ---------- Filtros paralelos a Process ---------- */
 
     @Transactional(readOnly = true)
-    public List<ActivityDTO> listByEmpresa(Long empresaId) {
-        return activityRepository.findByProcess_Empresa_Id(empresaId)
-                .stream().map(this::toDTO).toList();
+    public List<ActivityDTO> listByProcess(Long processId){
+        return activityRepository.findByProcess_Id(processId).stream().map(this::toDTO).toList();
     }
 
     @Transactional(readOnly = true)
-    public List<ActivityDTO> listByProcessStatus(String status) {
-        return activityRepository.findByProcess_Status(status)
-                .stream().map(this::toDTO).toList();
+    public List<ActivityDTO> listByEmpresa(Long empresaId){
+        return activityRepository.findByProcess_EmpresaId(empresaId).stream().map(this::toDTO).toList();
     }
 
     @Transactional(readOnly = true)
-    public List<ActivityDTO> listByProcessCategory(String category) {
-        return activityRepository.findByProcess_Category(category)
-                .stream().map(this::toDTO).toList();
+    public List<ActivityDTO> listByProcessStatus(String status){
+        return activityRepository.findByProcess_Status(status).stream().map(this::toDTO).toList();
     }
 
     @Transactional(readOnly = true)
-    public List<ActivityDTO> listByEmpresaAndStatus(Long empresaId, String status) {
-        return activityRepository.findByProcess_Empresa_IdAndProcess_Status(empresaId, status)
+    public List<ActivityDTO> listByProcessCategory(String category){
+        return activityRepository.findByProcess_Category(category).stream().map(this::toDTO).toList();
+    }
+
+    @Transactional(readOnly = true)
+    public List<ActivityDTO> listByEmpresaAndStatus(Long empresaId, String status){
+        return activityRepository.findByProcess_EmpresaIdAndProcess_Status(empresaId, status)
                 .stream().map(this::toDTO).toList();
     }
 }
