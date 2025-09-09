@@ -104,4 +104,30 @@ public class ActivityService {
         }
         activityRepository.deleteById(id);
     }
+
+    /* ====== NUEVOS LISTADOS alineados con ProcessRepository ====== */
+
+    @Transactional(readOnly = true)
+    public List<ActivityDTO> listByEmpresa(Long empresaId) {
+        return activityRepository.findByProcess_Empresa_Id(empresaId)
+                .stream().map(this::toDTO).toList();
+    }
+
+    @Transactional(readOnly = true)
+    public List<ActivityDTO> listByProcessStatus(String status) {
+        return activityRepository.findByProcess_Status(status)
+                .stream().map(this::toDTO).toList();
+    }
+
+    @Transactional(readOnly = true)
+    public List<ActivityDTO> listByProcessCategory(String category) {
+        return activityRepository.findByProcess_Category(category)
+                .stream().map(this::toDTO).toList();
+    }
+
+    @Transactional(readOnly = true)
+    public List<ActivityDTO> listByEmpresaAndStatus(Long empresaId, String status) {
+        return activityRepository.findByProcess_Empresa_IdAndProcess_Status(empresaId, status)
+                .stream().map(this::toDTO).toList();
+    }
 }
