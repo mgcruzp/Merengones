@@ -29,19 +29,20 @@ public class ProcessController {
         return ResponseEntity.ok(service.list());
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Object> getById(@PathVariable Long id) {
-        return ResponseEntity.ok(service.getById(id));
+    @GetMapping("/{empresaId}")
+    public ResponseEntity<Object> getByEmpresaId(@PathVariable Long empresaId) {
+        return ResponseEntity.ok(service.getByEmpresaId(empresaId));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable Long id, @RequestBody ProcessDTO dto) {
-        return ResponseEntity.ok(service.update(id, dto));
+    @PutMapping("/{empresaId}")
+    public ResponseEntity<Object> updateByEmpresaId(@PathVariable Long empresaId,
+                                                    @RequestBody ProcessDTO dto) {
+        return ResponseEntity.ok(service.updateByEmpresaId(empresaId, dto));
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
-        service.delete(id);
+    @DeleteMapping("/{empresaId}")
+    public ResponseEntity<Void> deleteByEmpresaId(@PathVariable Long empresaId) {
+        service.deleteByEmpresaId(empresaId);
         return ResponseEntity.noContent().build();
     }
 }

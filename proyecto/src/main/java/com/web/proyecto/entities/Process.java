@@ -5,9 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Entity
 @Table(name = "process")
 @Data
@@ -22,15 +19,15 @@ public class Process {
     @Column(nullable = false, length = 45)
     private String name;
 
-    @Column(length = 45)
+    @Column(length = 255)
     private String description;
 
+    @Column(length = 45)
+    private String category;         
+
     @Column(length = 45, nullable = false)
-    private String status;
+    private String status;      
 
-    @OneToMany(mappedBy = "process", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Activity> activities = new ArrayList<>();
-
-    @OneToMany(mappedBy = "process", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Edge> edges = new ArrayList<>();
+    @Column(name = "empresa_id", nullable = false)
+    private Long empresaId;       
 }

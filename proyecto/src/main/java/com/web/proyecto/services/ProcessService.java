@@ -5,6 +5,7 @@ import com.web.proyecto.entities.Process;
 import com.web.proyecto.repositories.ProcessRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 @Service
@@ -40,22 +41,84 @@ public class ProcessService {
         return processRepository.save(p);
     }
 
-    public void delete(Long id) {
-        processRepository.deleteById(id);
-    }
-    
-    public Object update(Long id, ProcessDTO dto) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+    public void deleteByEmpresaId(Long empresaId) {
+        List<Process> procesos = processRepository.findByEmpresaId(empresaId);
+        if (procesos.isEmpty()) {
+            throw new IllegalArgumentException("No processes found for empresaId: " + empresaId);
+        }
+        processRepository.deleteAll(procesos);
     }
 
-    public Object getById(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getById'");
+    @Transactional(readOnly = true)
+    public Object getByEmpresaId(Long empresaId) {
+        List<Process> procesos = processRepository.findByEmpresaId(empresaId);
+        if (procesos.isEmpty()) {
+            throw new IllegalArgumentException("No processes found for empresaId: " + empresaId);
+        }
+        return procesos.stream().map(p -> {
+            ProcessDTO dto = new ProcessDTO();
+            dto.setId(p.getId());
+            dto.setName(p.getName());
+            dto.setDescription(p.getDescription());
+            dto.setCategory(p.getCategory());
+            dto.setStatus(p.getStatus());
+            dto.setEmpresaId(p.getEmpresaId());
+            return dto;
+        }).toList();
+    }
+
+    public Object updateByEmpresaId(Long empresaId, ProcessDTO dto) {
+        List<Process> procesos = processRepository.findByEmpresaId(empresaId);
+        if (procesos.isEmpty()) {
+            throw new IllegalArgumentException("No processes found for empresaId: " + empresaId);
+        }
+
+        for (Process p : procesos) {
+            if (dto.getName() != null)        p.setName(dto.getName());
+            if (dto.getDescription() != null) p.setDescription(dto.getDescription());
+            if (dto.getCategory() != null)    p.setCategory(dto.getCategory());
+            if (dto.getStatus() != null)      p.setStatus(dto.getStatus());
+        }
+
+        List<Process> saved = processRepository.saveAll(procesos);
+
+        return saved.stream().map(p -> {
+            ProcessDTO out = new ProcessDTO();
+            out.setId(p.getId());
+            out.setName(p.getName());
+            out.setDescription(p.getDescription());
+            out.setCategory(p.getCategory());
+            out.setStatus(p.getStatus());
+            out.setEmpresaId(p.getEmpresaId());
+            return out;
+        }).toList();
     }
 
     public ProcessDTO create(ProcessDTO dto) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'create'");
+        if (dto.getEmpresaId() == null) {
+            throw new IllegalArgumentException("empresaId is required");
+        }
+        if (dto.getName() == null || dto.getName().isBlank()) {
+            throw new IllegalArgumentException("name is required");
+        }
+
+        Process entity = new Process();
+        entity.setId(null);
+        entity.setName(dto.getName());
+        entity.setDescription(dto.getDescription());
+        entity.setCategory(dto.getCategory());
+        entity.setStatus((dto.getStatus() == null || dto.getStatus().isBlank()) ? "DRAFT" : dto.getStatus());
+        entity.setEmpresaId(dto.getEmpresaId());
+
+        Process saved = processRepository.save(entity);
+
+        ProcessDTO res = new ProcessDTO();
+        res.setId(saved.getId());
+        res.setName(saved.getName());
+        res.setDescription(saved.getDescription());
+        res.setCategory(saved.getCategory());
+        res.setStatus(saved.getStatus());
+        res.setEmpresaId(saved.getEmpresaId());
+        return res;
     }
 }
