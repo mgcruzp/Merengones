@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "WikiApplication",
+            "request": "launch",
+            "mainClass": "com.merengones.wiki.WikiApplication",
+            "projectName": "wiki"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-ProyectoApplication<proyecto>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
