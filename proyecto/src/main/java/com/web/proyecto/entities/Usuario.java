@@ -1,5 +1,6 @@
 package com.web.proyecto.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,10 +21,12 @@ public class Usuario {
     @Column(nullable = false, unique = true, length = 120)
     private String email;
 
+    // ocultar en respuestas JSON (solo escritura)
     @Column(nullable = false, length = 120)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
-    // Relación con Empresa
+    // relación con Empresa
     @ManyToOne
     @JoinColumn(name = "empresa_id", nullable = false)
     private Empresa empresa;
