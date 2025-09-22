@@ -6,8 +6,10 @@ import com.web.proyecto.entities.Usuario;
 import com.web.proyecto.repositories.EmpresaRepository;
 import com.web.proyecto.repositories.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
@@ -18,13 +20,14 @@ public class UsuarioService {
 
     private final UsuarioRepository usuarioRepo;
     private final EmpresaRepository empresaRepo;
+    private final PasswordEncoder passwordEncoder; // inyectado
 
     private UsuarioDTO toDTO(Usuario u) {
         return UsuarioDTO.builder()
                 .id(u.getId())
                 .nombre(u.getNombre())
                 .email(u.getEmail())
-                .password(u.getPassword())
+                // no devolvemos password aquí porque ya está WRITE_ONLY en la entidad
                 .empresaId(u.getEmpresa().getId())
                 .build();
     }
@@ -37,11 +40,13 @@ public class UsuarioService {
                 .id(dto.getId())
                 .nombre(dto.getNombre())
                 .email(dto.getEmail())
-                .password(dto.getPassword())
+                // Hashear antes de guardar
+                .password(passwordEncoder.encode(dto.getPassword()))
                 .empresa(empresa)
                 .build();
     }
 
+    // esta es la parte de create que registra un usuario nuevo
     public UsuarioDTO create(UsuarioDTO dto) {
         if (usuarioRepo.existsByEmail(dto.getEmail())) {
             throw new IllegalArgumentException("Ya existe un usuario con email: " + dto.getEmail());
@@ -50,6 +55,7 @@ public class UsuarioService {
         return toDTO(saved);
     }
 
+    // esta es la parte de update que actualiza los datos de un usuario existente
     public UsuarioDTO update(Long id, UsuarioDTO dto) {
         Usuario u = usuarioRepo.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Usuario no encontrado: " + id));
@@ -60,7 +66,10 @@ public class UsuarioService {
 
         u.setNombre(dto.getNombre());
         u.setEmail(dto.getEmail());
-        u.setPassword(dto.getPassword());
+
+        // Re-hashear siempre que se actualice
+        u.setPassword(passwordEncoder.encode(dto.getPassword()));
+
         u.setEmpresa(empresaRepo.findById(dto.getEmpresaId())
                 .orElseThrow(() -> new IllegalArgumentException("Empresa no encontrada: " + dto.getEmpresaId())));
 
@@ -84,4 +93,14 @@ public class UsuarioService {
         }
         usuarioRepo.deleteById(id);
     }
+
+    //filtrar usuarios por empresa
+    @Transactional(readOnly = true)
+public List<UsuarioDTO> listByEmpresa(Long empresaId) {
+    return usuarioRepo.findAll().stream()
+            .filter(u -> u.getEmpresa().getId().equals(empresaId))
+            .map(this::toDTO)
+            .toList();
+}
+
 }
